@@ -109,3 +109,4 @@ export function calculateTimeRemaining(targetUtc: string, fromDate = new Date())
     seconds,
   };
 }
+

@@ -1,134 +1,172 @@
-# Sir Lewis Hamilton — Formula 1 Digital Portfolio
+# Sir Lewis Hamilton — Formula 1 Digital Portfolio & Archive
 
-> An Awwwards-level interactive portfolio & career archive for **Sir Lewis Hamilton** (7-time Formula 1 World Champion, driving for Scuderia Ferrari HP in car #44). Built from scratch with Vite, React 19, TypeScript, Tailwind CSS, GSAP 3, Lenis, and Framer Motion.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/67ecbc68-eec7-458f-8f60-c866cef16c8b/deploy-status)](https://app.netlify.com/projects/lewis-hamilton-44)
+[![React 19](https://img.shields.io/badge/React-19-blue.svg)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Strict-blue.svg)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC.svg)](https://tailwindcss.com/)
+[![GSAP 3](https://img.shields.io/badge/GSAP-3-green.svg)](https://greensock.com/gsap/)
+[![Vite](https://img.shields.io/badge/Vite-6-646CFF.svg)](https://vitejs.dev/)
 
-**🌐 Live Production Site**: [https://lewis-hamilton-44.netlify.app](https://lewis-hamilton-44.netlify.app)
-
----
-
-## 🏎 Features & Architecture
-
-- **Signature Hero Hover-Reveal**: Reinterprets the interactive mask mechanic inspired by landonorris.com. A smooth, 60fps lerped radial mask reveals Lewis in his Scuderia Ferrari helmet and scarlet race suit over his civilian portrait. On touch screens, it follows finger touch/drag (`touch-action: pan-y`) with an idle scanner sequence for immediate discoverability.
-- **Buttery-Smooth Mobile Scrolling**: Built to eliminate mobile stutter completely:
-  - GSAP Ticker-synchronized Lenis with `syncTouch: false` to retain native hardware-accelerated momentum scrolling on touch devices.
-  - `ScrollTrigger.config({ ignoreMobileResize: true })`.
-  - Responsive pinning via `gsap.matchMedia()` (horizontal track on desktop, vertical stacked flow on mobile).
-  - Heavy transforms & blurs avoided on mobile; hardware-contained sections (`contain: layout paint`).
-- **4-Second Formula 1 Loader Screen**:
-  - Centered wordmark with racing helmet drop-in (0–0.6s).
-  - Side-view SF-26 race car speeding across the track with a pooled GSAP smoke puff exhaust system and a synchronized 0–100% counter (0.6–3.4s).
-  - Curtain clip-path split reveal (3.4–4.0s).
-  - Preloads hero assets; skips automatically on subsequent visits via `sessionStorage` (force with `?loader=1`). Reduced motion preference shortens to ~1.2s without smoke.
-- **2026 Season Hub**:
-  - Standings table for top 7 drivers and top 4 constructors (with Hamilton & Ferrari highlighted).
-  - Last race review (Mexico City GP: Pole #105, P2 finish, +0.799s gap).
-  - Next race card (São Paulo Grand Prix at Interlagos).
-  - 2026 podium ledger and remaining rounds calendar.
-  - Head-to-head points duel with teammate Charles Leclerc (259 vs 245 pts).
-- **Interactive SF-26 Machine**:
-  - Detailed Rosso Corsa aerodynamic vector blueprint with 7 interactive component hotspots (front wing, halo, power unit, "macarena" rotating rear wing, venturi floor, tyres, #44 livery).
-  - Exploded view toggle animating subassemblies outward.
-  - Full keyboard accessibility (`Enter`/`Space` to inspect, `Left`/`Right` arrows to cycle, `Escape` to close).
-- **Interactive Helmets & Number 44**:
-  - Era-specific illustrated helmets (McLaren Senna tribute yellow, Mercedes purple/neon, Ferrari fluo yellow & Rosso Corsa).
-  - Tap/click to cycle through eras with quote highlights.
-- **Career in Numbers & Stacking World Titles**:
-  - Animated count-up statistics (7 titles, 106 wins, 105 poles, 209 podiums, 399 starts, 5,277.5 points).
-  - 7 World Title cards with a high-performance stacking scroll effect.
-- **Race Mode Easter Egg**:
-  - Press `4` twice in quick succession (or tap the floating `44` badge in the bottom left) to activate the 5-light FIA starting grid gantry, sound-wave countdown, screen reaction, and celebratory confetti.
-- **Night Race Dark Mode**:
-  - Seamless toggle between light default theme (warm off-white `#F6F4EF`) and "Night Race" dark theme (`#0A0A0A`) with CSS custom properties.
+**🌐 Live Production Site**: [https://lewis-hamilton-44.netlify.app](https://lewis-hamilton-44.netlify.app)  
+**💻 GitHub Repository**: [https://github.com/dinil2/lewis-hamilton-portfolio](https://github.com/dinil2/lewis-hamilton-portfolio)
 
 ---
 
-## 🛠 Tech Stack
+## 📖 Why I Created This Site
 
-- **Framework**: Vite + React 19 + TypeScript (Strict)
-- **Styling**: Tailwind CSS + Custom CSS Design Tokens
-- **Motion & Scroll**: GSAP 3 (ScrollTrigger) + Lenis Smooth Scroll + Framer Motion
-- **Icons**: Lucide React
-- **Confetti**: canvas-confetti
-- **Deployment**: Static Netlify SPA (`netlify.toml` included)
+As a software engineering student and lifelong motorsport enthusiast, I built this website as a tribute to **Sir Lewis Hamilton**—the most successful driver in Formula 1 history—celebrating his chapter piloting the iconic Rosso Corsa scarlet of **Scuderia Ferrari HP** in car **#44**.
+
+Most fan sites and sports pages feel like static wiki clones or generic AI templates with laggy mobile scrolling. My goal was to create an **Awwwards-level digital instrument**:
+1. **Cinematic & Photorealistic**: Real high-resolution photography, telemetry aesthetics, and luxury motorsport design rather than cartoon illustrations.
+2. **Smooth Mobile-First Experience**: Eliminate the mobile stutter and scroll-jank common on animation-heavy websites by synchronizing Lenis with GSAP's internal ticker and maintaining native momentum scrolling on touch devices.
+3. **Interactive Visual Storytelling**: Instead of just reading stats, visitors interact with the car, reveal the helmet through the driver's face, inspect technical telemetry, and feel the excitement of race day with live countdown timers.
 
 ---
 
-## 🚀 Getting Started
+## ⚡ What This Website Features
 
-### 1. Install Dependencies
-```bash
-npm install
+### 1. Signature Hero Dual-Layer Reveal
+- Inspired by bespoke editorial portfolios, a front-facing civilian portrait of Lewis Hamilton reveals his Ferrari helmet and scarlet race suit through a hardware-accelerated radial mask.
+- On desktop, it tracks cursor velocity with a smooth lerp loop (`requestAnimationFrame`).
+- On touch devices, it follows finger press and swipe gestures (`touch-action: pan-y`) with an idle scanner sequence for discoverability without locking vertical scroll.
+
+### 2. FIA 5-Light Start Gantry & Telemetry Launch Sequence
+- A custom F1 launch sequence featuring 5 sequential red start lights, live RPM redline audio-visual progression, and power unit status indicators (PU, ERS, HYDRAULICS), leading into a carbon curtain wipe transition.
+- Runs once per session via `sessionStorage` (force with `?loader=1`) and respects `prefers-reduced-motion`.
+
+### 3. Dynamic 2026 Season Hub & Auto-Rollover Calendar
+- **Live Countdown to Lights Out**: Real-time ticker counting down days, hours, minutes, and seconds to the next race start.
+- **Smart Rollover Engine (`src/lib/schedule.ts`)**: Built-in calendar logic that automatically detects when a race finishes (e.g. after São Paulo GP on Nov 8) and seamlessly advances the Next Race Card to the subsequent Grand Prix (Las Vegas, Qatar, Abu Dhabi) with zero manual code changes.
+- **Official Standings Ledger**: Top 7 Drivers and Top 4 Constructors standings tables with Hamilton and Ferrari highlighted.
+- **Intra-Team Duel**: Head-to-head points tracker between Lewis Hamilton (#44) and Charles Leclerc (#16).
+
+### 4. Interactive Ferrari SF-26 Aerodynamic Machine
+- Photorealistic studio display of the Ferrari SF-26 F1 car with an active laser scan sweep.
+- **7 Telemetry Hotspots**: Pulsing radar nodes over the active front wing, halo cockpit, V6 turbo hybrid power unit, "macarena" rotating rear wing, venturi floor tunnels, Pirelli tyres, and #44 livery.
+- Clicking any node opens an interactive HUD technical spec drawer with keyboard accessibility (`Esc` to close, arrow keys to navigate).
+
+### 5. Career in Numbers & Stacking World Titles
+- Count-up statistics showcasing 399 starts, 106 wins, 105 poles, 209 podiums, 5,277.5 points, and 7 World Championships.
+- Stacking scroll card sequence detailing each of his 7 World Championship campaigns (2008 McLaren, 2014–2020 Mercedes).
+
+### 6. Helmets Archive, Records Wall & Teammates Grid
+- **Helmets Showcase**: Real photographic archive of his Ferrari helmets (Silver Glitter Edition, Fluo Yellow Senna Tribute, and Podium Celebration).
+- **Historic Records Wall**: First driver to 100 wins and 100 poles, oldest polesitter since 1994, 9 British GP victories at Silverstone, and 8 Hungarian GP wins.
+- **All 8 Teammates**: Complete grid from Fernando Alonso (2007) to Charles Leclerc (2025–present).
+
+### 7. Interactive Race Mode Easter Egg
+- Double-press the `4` key on desktop (or tap the floating `#44` indicator) to trigger a starting-lights sequence, track vibration reaction, and celebratory victory confetti.
+
+---
+
+## 🛠 Tech Stack & Architecture
+
+| Technology | Purpose |
+| :--- | :--- |
+| **Vite** | Lightning-fast static SPA bundler and dev server |
+| **React 19** | Component architecture and state management |
+| **TypeScript (Strict)** | End-to-end type safety for all career and season data |
+| **Tailwind CSS** | Design token architecture with custom colors (`rosso`, `darkCarbon`, `ferrariYellow`) |
+| **GSAP 3 + ScrollTrigger** | Pinning, parallax layers, text reveals, and sequence timelines |
+| **Lenis** | Smooth wheel scrolling on desktop with native momentum retained on touch |
+| **Framer Motion** | Component-level spring animations, popover drawers, and presence transitions |
+| **Lucide React** | Clean, accessible iconography |
+| **Canvas Confetti** | Celebratory particles for race mode |
+| **Netlify Edge** | High-performance static SPA hosting with zero server setup |
+
+### Mobile Scroll Optimization Rules
+To ensure 60fps scrolling on mobile devices:
+1. `Lenis` is driven directly by GSAP's ticker with `syncTouch: false`—ensuring touch devices use native iOS/Android hardware momentum without event interception.
+2. `ScrollTrigger.config({ ignoreMobileResize: true })` prevents aggressive recalculations when address bars collapse.
+3. Complex pinning is isolated to desktop via `gsap.matchMedia()`, falling back to clean vertical flows on phones.
+4. CSS layout containment (`contain: layout paint`) is applied to major page sections.
+
+---
+
+## 📂 Project Directory Structure
+
+```
+lewis-hamilton-portfolio/
+├── public/
+│   ├── assets/
+│   │   ├── car/             # High-resolution SF-26 car renders
+│   │   ├── gallery/         # 12 curated career photographs (WebP)
+│   │   ├── helmets/         # Real helmet photography (Silver, Yellow, Celebration)
+│   │   └── hero/            # Dual-layer aligned portraits (Civilian & Helmet)
+│   ├── favicon.svg          # Custom racing helmet vector favicon
+│   ├── robots.txt           # SEO crawler rules
+│   └── sitemap.xml          # Search engine sitemap
+├── src/
+│   ├── components/
+│   │   ├── car/             # InteractiveCar, Telemetry Hotspots, HUD Drawer
+│   │   ├── hero/            # Dual-layer RevealPortrait, NextRaceCard, HeroBackdrop
+│   │   ├── layout/          # Pill Navbar, MobileMenu, Footer, SectionWrapper
+│   │   ├── loader/          # 5-Light FIA Gantry Sequence
+│   │   ├── sections/        # Numbers, Story, Teams, Titles, Season2026, Teammates, Gallery, FAQ
+│   │   └── ui/              # Buttons, Cards, CustomCursor, ScrollProgressBar
+│   ├── data/                # Strongly typed career, season, and team data files
+│   ├── hooks/               # useRaceCountdown, useLenis, useGsapContext, usePointerReveal
+│   ├── lib/                 # schedule.ts (calendar engine), animation.ts (GSAP eases)
+│   ├── styles/              # globals.css, tokens.css
+│   └── types/               # TypeScript interfaces
+├── netlify.toml             # Netlify SPA redirect rules & caching headers
+└── package.json
 ```
 
-### 2. Run Local Development Server
+---
+
+## 🚀 Getting Started Locally
+
+### Prerequisites
+- Node.js 20+
+- npm or pnpm
+
+### Installation
 ```bash
+# Clone the repository
+git clone https://github.com/dinil2/lewis-hamilton-portfolio.git
+
+# Navigate into the project
+cd lewis-hamilton-portfolio
+
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
 ```
-Open `http://localhost:5173` in your browser.
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-### 3. Build for Production
+### Production Build
 ```bash
+# Compile TypeScript and build static bundle
 npm run build
-```
-Creates an optimized, chunked static bundle in `dist/`.
 
-### 4. Run Linting
-```bash
-npm run lint
+# Preview production build locally
+npm run preview
 ```
 
 ---
 
-## 🔄 How to Update Data After Each Race
+## 🔄 Updating Data After Races
 
-All data is strictly decoupled from UI components and maintained in typed objects in `src/data/`:
-
-| File | What to Update |
-| :--- | :--- |
-| `src/data/site.ts` | Update `lastUpdated` (e.g. `'8 November 2026'`) and `snapshotLabel` (e.g. `'After Round 20, São Paulo GP'`). |
-| `src/data/career.ts` | Update `starts`, `wins`, `poles`, `podiums`, `points`, `lastWin`, and `latestPole`. |
-| `src/data/season2026.ts` | Update 2026 points, standings, `lastRace` summary, and `nextRace` details. |
-| `src/data/teammates.ts` | Update teammate stats or partnership notes if needed. |
-| `src/data/records.ts` | Update record numbers and historical firsts. |
-
-Once updated in `src/data/`, the entire site updates its statistics, standings, next race cards, and telemetry automatically!
-
----
-
-## 🖼 How to Swap Hero & Gallery Images
-
-### Hero Images
-Drop your high-resolution images into:
-- `public/assets/hero/hamilton-base.webp` (Lewis facing forward, shoulders to mid-torso, 4:5 aspect ratio)
-- `public/assets/hero/hamilton-helmet.webp` (Lewis in Ferrari helmet and team jacket, with **identical framing and head position** as the base image)
-
-> **Important**: To ensure a flawless reveal effect, ensure both portraits have identical dimensions and head center points. If images are missing, the site automatically renders pixel-aligned vector SVG illustrations without breaking.
-
-### Gallery Images
-Place up to 12 images named `01.webp` through `12.webp` into:
-- `public/assets/gallery/`
-
----
-
-## 🌐 Deploying to Netlify
-
-This project is configured as a zero-configuration static SPA for Netlify:
-1. Connect your repository to Netlify.
-2. Build command: `npm run build`
-3. Publish directory: `dist`
-4. The included `netlify.toml` automatically configures:
-   - Node 20 environment
-   - SPA fallback redirects (`/* -> /index.html 200`)
-   - 1-year immutable caching for static hashed assets (`/assets/*`)
-   - Production security headers (X-Frame-Options, XSS protection, nosniff, referrer-policy)
+All statistics are decoupled from the UI inside `src/data/`:
+* `src/data/season2026.ts`: Update driver points, constructor standings, and podium finishes.
+* `src/data/career.ts`: Update career start count, wins, poles, or points.
+* `src/lib/schedule.ts`: Add or modify future race dates and starting times.
 
 ---
 
 ## ⚖️ Legal & Fan Disclaimer
 
-This is an independent fan project. It is **not** affiliated with or endorsed by Sir Lewis Hamilton, Scuderia Ferrari, or Formula 1. All registered trademarks, logos, and car names belong to their respective owners.
+This is an **independent, non-commercial fan project** created for educational and portfolio demonstration purposes. It is **not affiliated with, endorsed by, or sponsored by** Sir Lewis Hamilton, Scuderia Ferrari HP, Formula 1, or the FIA. All trademarks, logos, and brand names belong to their respective owners.
 
-### Developer
-- **Designed & Developed by**: Dinil Bhashana (Software Engineering Student, Sri Lanka)
-- **LinkedIn**: [dinil-bhashana](https://www.linkedin.com/in/dinil-bhashana)
+---
 
+## 👨‍💻 Developer & Author
+
+**Dinil Bhashana**  
+Software Engineering Student — Sri Lanka  
+- **LinkedIn**: [https://www.linkedin.com/in/dinil-bhashana](https://www.linkedin.com/in/dinil-bhashana)  
+- **GitHub**: [@dinil2](https://github.com/dinil2)  
+- **Portfolio**: [https://lewis-hamilton-44.netlify.app](https://lewis-hamilton-44.netlify.app)

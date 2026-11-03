@@ -126,11 +126,10 @@ export const Navbar: React.FC<NavbarProps> = ({ isDark, toggleDark }) => {
                 <a
                   key={item.href}
                   href={item.href}
-                  className={`relative px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all ${
-                    isActive
+                  className={`relative px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all ${isActive
                       ? 'text-rosso bg-rosso/15'
                       : 'text-zinc-400 hover:text-white hover:bg-white/5'
-                  }`}
+                    }`}
                 >
                   {item.label}
                   {isActive && (

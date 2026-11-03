@@ -39,3 +39,4 @@ export function useRaceCountdown(): CountdownState {
     isConcluded,
   };
 }
+
