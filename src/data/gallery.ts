@@ -110,3 +110,4 @@ export const galleryItems: GalleryItem[] = [
     tags: ['Pole 105', 'Mexico City', 'Age 41'],
   },
 ];
+

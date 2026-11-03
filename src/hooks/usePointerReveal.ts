@@ -141,3 +141,4 @@ export function usePointerReveal(options: UsePointerRevealOptions = {}) {
 
   return { containerRef, hasInteracted };
 }
+

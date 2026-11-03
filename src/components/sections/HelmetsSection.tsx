@@ -1,19 +1,61 @@
 import React, { useState } from 'react';
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
-import { eraHelmets } from '@/data/helmets';
-import { Sparkles, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Quote, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+
+interface RealHelmetItem {
+  id: string;
+  era: string;
+  name: string;
+  image: string;
+  description: string;
+  quote?: string;
+  tags: string[];
+}
+
+const realHelmetsData: RealHelmetItem[] = [
+  {
+    id: 'ferrari-yellow',
+    era: 'Scuderia Ferrari Era (2025–Present)',
+    name: 'The Iconic Fluo Yellow Ferrari Edition',
+    image: '/assets/helmets/yellow.webp',
+    description:
+      'The unmistakable neon yellow lid evolved for Maranello. Features high-visibility fluo yellow crown, the Prancing Horse shield on the crest, and Hamilton’s personal racing number 44 proudly emblazoned along the side.',
+    quote: '"Wearing the red suit with my signature yellow helmet is childhood dreams made tangible."',
+    tags: ['Rosso Corsa', 'Fluo Yellow 44', 'Ferrari Scuderia'],
+  },
+  {
+    id: 'ferrari-silver',
+    era: 'Special Grand Prix Edition',
+    name: 'Glitter Silver & Prancing Horse Crest',
+    image: '/assets/helmets/silver.webp',
+    description:
+      'A bespoke celebratory livery featuring sparkling metalflake silver lacquer, red carbon sunstrip, and Scuderia Ferrari badging. Worn under the floodlights for historic night races.',
+    quote: '"Every helmet is a canvas for where I am in life, racing for the tifosi with my whole heart."',
+    tags: ['Metalflake Silver', 'Night Race Spec', 'Custom Livery'],
+  },
+  {
+    id: 'ferrari-celebration',
+    era: 'Victory Edition',
+    name: 'Parc Fermé Triumph',
+    image: '/assets/helmets/celebration.webp',
+    description:
+      'Lewis Hamilton in full race-winning trim celebrating alongside the Scuderia pit crew. Demonstrating the union of Hamilton’s relentless drive and Ferrari’s historic racing spirit.',
+    quote: '"Still I Rise isn’t just words. It’s what drives every victory in scarlet."',
+    tags: ['Victory Trim', 'Race Winner', 'Tifosi'],
+  },
+];
 
 export const HelmetsSection: React.FC = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const currentHelmet = eraHelmets[selectedIndex];
+  const currentHelmet = realHelmetsData[selectedIndex];
 
   const handleNext = () => {
-    setSelectedIndex((prev) => (prev + 1) % eraHelmets.length);
+    setSelectedIndex((prev) => (prev + 1) % realHelmetsData.length);
   };
 
   const handlePrev = () => {
-    setSelectedIndex((prev) => (prev - 1 + eraHelmets.length) % eraHelmets.length);
+    setSelectedIndex((prev) => (prev - 1 + realHelmetsData.length) % realHelmetsData.length);
   };
 
   return (
@@ -22,140 +64,56 @@ export const HelmetsSection: React.FC = () => {
       badge="Visual Identity"
       subtitle="Armor & Symbolism"
       title="Helmets & Number 44"
-      description="The iconic protective armor of Lewis Hamilton. From the bright yellow Senna homage chosen by his father so he could spot him on track, to the modern fluorescent yellow on Ferrari scarlet."
+      description="The iconic protective armor of Lewis Hamilton. Photographed in real race trim—from his signature yellow homage to Ayrton Senna, to the bespoke silver glitter and Ferrari scarlet editions."
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        {/* Left: Illustrated Helmet Display Stage */}
+        {/* Left: Real Photography Showcase */}
         <div className="lg:col-span-7 flex flex-col items-center">
-          <div className="relative w-full max-w-md aspect-square rounded-card glass-panel border border-surface-border p-8 flex items-center justify-center overflow-hidden">
-            {/* Ambient Back Glow according to current era colors */}
-            <div
-              className="absolute w-64 h-64 rounded-full blur-3xl opacity-30 transition-colors duration-700"
-              style={{ backgroundColor: currentHelmet.colors[0] }}
-            />
+          <div className="relative w-full max-w-lg aspect-[4/5] rounded-2xl bg-[#0D0D10] border border-white/10 p-4 flex items-center justify-center overflow-hidden shadow-2xl">
+            {/* Ambient Back Glow */}
+            <div className="absolute w-72 h-72 rounded-full blur-3xl opacity-20 bg-rosso pointer-events-none" />
 
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentHelmet.id}
-                initial={{ opacity: 0, scale: 0.9, rotateY: -20 }}
-                animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-                exit={{ opacity: 0, scale: 0.9, rotateY: 20 }}
-                transition={{ duration: 0.45 }}
-                className="relative z-10 w-full h-full flex items-center justify-center"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.4 }}
+                className="relative z-10 w-full h-full rounded-xl overflow-hidden"
               >
-                {/* SVG Helmet Render */}
-                <svg
-                  viewBox="0 0 300 260"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-full max-w-[280px] drop-shadow-2xl"
-                >
-                  {/* Helmet Shell Dome */}
-                  <path
-                    d="M50 160 C 45 70, 90 20, 160 20 C 230 20, 265 70, 260 160 C 260 220, 230 245, 160 245 C 90 245, 50 220, 50 160 Z"
-                    fill={currentHelmet.colors[0]}
-                    stroke="#111"
-                    strokeWidth="3"
-                  />
+                <img
+                  src={currentHelmet.image}
+                  alt={currentHelmet.name}
+                  className="w-full h-full object-cover object-center"
+                />
 
-                  {/* Era-Specific Livery Details */}
-                  {currentHelmet.id === 'mclaren-era' && (
-                    <>
-                      {/* Senna Green & Blue Bands */}
-                      <path d="M52 140 C 90 145, 230 145, 258 140" stroke="#002B7F" strokeWidth="12" />
-                      <path d="M54 152 C 90 157, 230 157, 256 152" stroke="#00843D" strokeWidth="8" />
-                      <path d="M56 160 C 90 165, 230 165, 254 160" stroke="#E10600" strokeWidth="6" />
-                    </>
-                  )}
-
-                  {currentHelmet.id === 'mercedes-era' && (
-                    <>
-                      {/* Regal Purple with Neon accents */}
-                      <path
-                        d="M70 40 C 120 70, 200 70, 250 40"
-                        stroke="#B500E0"
-                        strokeWidth="10"
-                        strokeLinecap="round"
-                      />
-                      <path d="M60 140 C 110 160, 210 160, 260 140" stroke="#00E5FF" strokeWidth="6" />
-                      <text
-                        x="160"
-                        y="65"
-                        fill="#00E5FF"
-                        fontFamily="'Syne', sans-serif"
-                        fontWeight="900"
-                        fontSize="14"
-                        textAnchor="middle"
-                      >
-                        STILL I RISE
-                      </text>
-                    </>
-                  )}
-
-                  {currentHelmet.id === 'ferrari-era' && (
-                    <>
-                      {/* Fluo Yellow racing stripes on Rosso Corsa */}
-                      <path
-                        d="M120 22 C 135 100, 135 120, 125 130 L 195 130 C 185 120, 185 100, 200 22 Z"
-                        fill="#FFF200"
-                      />
-                      <text
-                        x="160"
-                        y="80"
-                        fill="#111"
-                        fontFamily="'Syne', sans-serif"
-                        fontWeight="900"
-                        fontSize="28"
-                        textAnchor="middle"
-                      >
-                        44
-                      </text>
-                    </>
-                  )}
-
-                  {/* Visor Cutout */}
-                  <path
-                    d="M65 130 C 65 95, 90 85, 160 85 C 230 85, 250 95, 250 130 C 250 165, 225 175, 160 175 C 95 175, 65 165, 65 130 Z"
-                    fill="#151515"
-                  />
-                  <path
-                    d="M70 130 C 70 100, 95 92, 160 92 C 225 92, 245 100, 245 130 C 245 158, 220 168, 160 168 C 100 168, 70 158, 70 130 Z"
-                    fill="#282828"
-                  />
-                  {/* Visor Glare */}
-                  <path
-                    d="M85 105 Q 160 95 235 105 Q 220 120 95 120 Z"
-                    fill="#FFF"
-                    opacity="0.3"
-                  />
-
-                  {/* Chin Spoiler and Air vents */}
-                  <rect x="135" y="210" width="50" height="14" rx="3" fill="#111" />
-                  <circle cx="145" cy="217" r="2" fill="#888" />
-                  <circle cx="160" cy="217" r="2" fill="#888" />
-                  <circle cx="175" cy="217" r="2" fill="#888" />
-                </svg>
+                {/* Bottom Tag overlay */}
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between p-3 rounded-xl bg-black/75 backdrop-blur-md border border-white/10 text-xs font-telemetry">
+                  <span className="text-white font-bold">{currentHelmet.name}</span>
+                  <span className="text-rosso font-mono">GENUINE PHOTO</span>
+                </div>
               </motion.div>
             </AnimatePresence>
           </div>
 
-          {/* Era Navigation Controls */}
-          <div className="flex items-center gap-3 mt-6">
+          {/* Navigation Controls */}
+          <div className="flex items-center gap-4 mt-6">
             <button
               onClick={handlePrev}
-              className="p-2.5 rounded-full glass-panel hover:bg-cream-200 dark:hover:bg-raceDark text-text-primary transition-colors"
-              aria-label="Previous Era Helmet"
+              className="p-3 rounded-full bg-[#121215] border border-white/10 hover:border-rosso text-white transition-all"
+              aria-label="Previous Helmet"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
 
             <div className="flex items-center gap-2">
-              {eraHelmets.map((h, i) => (
+              {realHelmetsData.map((h, i) => (
                 <button
                   key={h.id}
                   onClick={() => setSelectedIndex(i)}
                   className={`h-2 rounded-full transition-all ${
-                    selectedIndex === i ? 'w-8 bg-rosso' : 'w-2 bg-surface-border'
+                    selectedIndex === i ? 'w-8 bg-rosso' : 'w-2 bg-white/20'
                   }`}
                   aria-label={`Select ${h.name}`}
                 />
@@ -164,32 +122,44 @@ export const HelmetsSection: React.FC = () => {
 
             <button
               onClick={handleNext}
-              className="p-2.5 rounded-full glass-panel hover:bg-cream-200 dark:hover:bg-raceDark text-text-primary transition-colors"
-              aria-label="Next Era Helmet"
+              className="p-3 rounded-full bg-[#121215] border border-white/10 hover:border-rosso text-white transition-all"
+              aria-label="Next Helmet"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
           </div>
         </div>
 
-        {/* Right: Era Details & The Story of #44 */}
+        {/* Right: Real Era Details & The Story of #44 */}
         <div className="lg:col-span-5 flex flex-col justify-between">
-          <div className="p-8 rounded-card glass-panel border border-surface-border mb-6">
-            <span className="text-xs font-mono text-rosso font-bold uppercase tracking-wider block mb-1">
+          <div className="p-8 rounded-2xl bg-[#121215] border border-white/10 mb-6 shadow-xl">
+            <span className="text-xs font-telemetry text-rosso font-bold uppercase tracking-wider block mb-1">
               {currentHelmet.era}
             </span>
-            <h3 className="font-displayGrotesk font-black text-2xl sm:text-3xl text-text-primary mb-3">
+            <h3 className="font-display font-black text-2xl sm:text-3xl text-white mb-3">
               {currentHelmet.name}
             </h3>
 
-            <p className="text-sm text-text-secondary leading-relaxed mb-6">
+            <p className="text-sm text-zinc-300 leading-relaxed mb-6 font-sans">
               {currentHelmet.description}
             </p>
 
+            {/* Tags */}
+            <div className="flex flex-wrap gap-2 mb-6">
+              {currentHelmet.tags.map((t) => (
+                <span
+                  key={t}
+                  className="px-2.5 py-1 rounded-md bg-[#18181C] text-[11px] font-mono text-zinc-300 border border-white/5"
+                >
+                  #{t}
+                </span>
+              ))}
+            </div>
+
             {currentHelmet.quote && (
-              <div className="p-4 rounded-xl bg-cream-100/80 dark:bg-raceDark-card border-l-2 border-rosso flex items-start gap-3">
+              <div className="p-4 rounded-xl bg-[#18181C] border-l-2 border-rosso flex items-start gap-3">
                 <Quote className="w-4 h-4 text-rosso shrink-0 mt-0.5" />
-                <p className="font-serifTitle italic text-xs sm:text-sm text-text-primary">
+                <p className="font-sans italic text-xs sm:text-sm text-zinc-200">
                   {currentHelmet.quote}
                 </p>
               </div>
@@ -197,14 +167,14 @@ export const HelmetsSection: React.FC = () => {
           </div>
 
           {/* Why #44 Feature Card */}
-          <div className="p-6 rounded-card bg-rosso/10 border border-rosso/30">
+          <div className="p-6 rounded-2xl bg-rosso/10 border border-rosso/30">
             <div className="flex items-center gap-2 mb-2 text-rosso">
               <Sparkles className="w-4 h-4" />
-              <h4 className="font-displayGrotesk font-black text-sm uppercase tracking-wide">
+              <h4 className="font-display font-black text-sm uppercase tracking-wide">
                 Why Number 44?
               </h4>
             </div>
-            <p className="text-xs text-text-secondary leading-relaxed">
+            <p className="text-xs text-zinc-300 leading-relaxed font-sans">
               When eight-year-old Lewis entered his first kart race in 1993, his father Anthony chose #44 from his red Vauxhall Cavalier registration plate (F44). Throughout seven championship seasons, Hamilton famously declined the champion’s #1, ensuring the #44 remained motorsport's most celebrated racing number.
             </p>
           </div>

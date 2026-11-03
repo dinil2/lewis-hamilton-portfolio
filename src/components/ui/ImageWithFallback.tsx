@@ -51,3 +51,4 @@ export const ImageWithFallback: React.FC<ImageWithFallbackProps> = ({
 
   return <img src={src} alt={alt} onError={handleError} className={className} {...props} />;
 };
+

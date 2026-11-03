@@ -67,3 +67,4 @@ export const SmokeSystem: React.FC<SmokeSystemProps> = ({ active }) => {
     </div>
   );
 };
+

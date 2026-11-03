@@ -1,25 +1,26 @@
+/* Default Dark Carbon Theme (High-tech Formula 1 Aesthetic) */
 :root {
-  --bg-primary: #F6F4EF;
-  --bg-secondary: #ECE8DE;
-  --bg-tertiary: #E2DDD0;
-  --surface: #FFFFFF;
-  --surface-glass: rgba(255, 255, 255, 0.75);
-  --surface-card: rgba(255, 255, 255, 0.85);
-  --surface-border: rgba(14, 14, 14, 0.08);
+  --bg-primary: #080809;
+  --bg-secondary: #111113;
+  --bg-tertiary: #18181C;
+  --surface: #111113;
+  --surface-glass: rgba(17, 17, 19, 0.8);
+  --surface-card: rgba(22, 22, 25, 0.85);
+  --surface-border: rgba(255, 255, 255, 0.08);
 
-  --text-primary: #0E0E0E;
-  --text-secondary: #4A4640;
-  --text-muted: #7E786E;
-  --text-inverted: #F6F4EF;
+  --text-primary: #FFFFFF;
+  --text-secondary: #A1A1AA;
+  --text-muted: #71717A;
+  --text-inverted: #080809;
 
   --rosso-corsa: #E10600;
   --rosso-dark: #B30500;
   --rosso-light: #FF2B24;
   --ferrari-yellow: #FFE500;
-  
-  --shadow-sm: 0 2px 8px rgba(14, 14, 14, 0.04);
-  --shadow-md: 0 8px 24px rgba(14, 14, 14, 0.06);
-  --shadow-lg: 0 16px 40px rgba(14, 14, 14, 0.1);
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.8);
 
   /* Hero signature reveal variables */
   --reveal-x: 50%;
@@ -27,26 +28,27 @@
   --reveal-r: 0px;
 }
 
-.dark {
-  --bg-primary: #0A0A0A;
-  --bg-secondary: #121212;
-  --bg-tertiary: #1A1A1A;
-  --surface: #161616;
-  --surface-glass: rgba(22, 22, 22, 0.75);
-  --surface-card: rgba(24, 24, 24, 0.85);
-  --surface-border: rgba(246, 244, 239, 0.1);
+/* Crisp Clean Light Mode (Apple / Porsche Gallery White, NOT muddy yellow) */
+.light {
+  --bg-primary: #FAFAFA;
+  --bg-secondary: #F4F4F6;
+  --bg-tertiary: #EBEBEF;
+  --surface: #FFFFFF;
+  --surface-glass: rgba(255, 255, 255, 0.9);
+  --surface-card: #FFFFFF;
+  --surface-border: rgba(0, 0, 0, 0.08);
 
-  --text-primary: #F6F4EF;
-  --text-secondary: #B0AAA0;
-  --text-muted: #736E66;
-  --text-inverted: #0E0E0E;
+  --text-primary: #09090B;
+  --text-secondary: #52525B;
+  --text-muted: #71717A;
+  --text-inverted: #FFFFFF;
 
   --rosso-corsa: #E10600;
   --rosso-dark: #B30500;
-  --rosso-light: #FF352E;
-  --ferrari-yellow: #FFE500;
+  --rosso-light: #FF2B24;
+  --ferrari-yellow: #E6CF00;
 
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.7);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.1);
 }

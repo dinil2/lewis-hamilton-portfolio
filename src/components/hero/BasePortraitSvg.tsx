@@ -44,7 +44,7 @@ export const BasePortraitSvg: React.FC<{ className?: string }> = ({ className = 
         fill="#111"
       />
       <circle cx="300" cy="540" r="4" fill="#C9946B" /> {/* Chain accent */}
-      <path d="M280 545 C 290 565, 310 565, 320 545" stroke="#FFE500" strokeWidth="2.5" fill="none" opacity="0.8"/>
+      <path d="M280 545 C 290 565, 310 565, 320 545" stroke="#FFE500" strokeWidth="2.5" fill="none" opacity="0.8" />
 
       {/* Neck */}
       <path

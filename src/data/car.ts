@@ -86,3 +86,4 @@ export const carHotspots: CarHotspot[] = [
       'Lewis Hamilton has raced with #44 since his earliest karting days in 1993. On the Ferrari SF-26, the high-visibility yellow number sits atop carbon fiber woven with deep Rosso Corsa lacquer.',
   },
 ];
+

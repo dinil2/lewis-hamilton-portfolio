@@ -58,3 +58,4 @@ export const offTrackProjects: OffTrackProject[] = [
     impact: 'Inspired athletes globally to rethink sports nutrition, carbon footprints, and conscious living.',
   },
 ];
+

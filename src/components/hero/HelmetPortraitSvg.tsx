@@ -174,3 +174,4 @@ export const HelmetPortraitSvg: React.FC<{ className?: string }> = ({ className 
     </svg>
   );
 };
+

@@ -115,35 +115,35 @@ export const NumbersSection: React.FC = () => {
           {stats.map((stat) => (
             <div
               key={stat.label}
-              className={`stat-card relative p-6 sm:p-8 rounded-card glass-panel border transition-all duration-300 hover:-translate-y-1 ${
+              className={`stat-card relative p-6 sm:p-8 rounded-2xl bg-[#111114] border transition-all duration-300 hover:-translate-y-1 shadow-xl ${
                 stat.highlight
-                  ? 'border-rosso/30 shadow-rosso/5 shadow-xl'
-                  : 'border-surface-border'
+                  ? 'border-rosso/40 shadow-rosso/5'
+                  : 'border-white/10'
               }`}
             >
               {stat.highlight && (
-                <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-rosso animate-ping" />
+                <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-rosso animate-pulse" />
               )}
-              <span className="block text-xs font-mono font-semibold uppercase tracking-wider text-text-muted mb-2">
+              <span className="block text-xs font-telemetry font-bold uppercase tracking-wider text-zinc-500 mb-2">
                 {stat.label}
               </span>
 
               <div className="flex items-baseline gap-1 my-1">
                 <span
-                  className="stat-number font-displayGrotesk font-black text-5xl sm:text-6xl text-text-primary tracking-tight tabular-nums"
+                  className="stat-number font-display font-black text-5xl sm:text-6xl text-white tracking-tight tabular-nums"
                   data-target={stat.value}
                   data-decimals={stat.decimals || 0}
                 >
                   0
                 </span>
                 {stat.suffix && (
-                  <span className="font-displayGrotesk font-bold text-2xl text-rosso">
+                  <span className="font-display font-bold text-2xl text-rosso">
                     {stat.suffix}
                   </span>
                 )}
               </div>
 
-              <p className="text-xs sm:text-sm text-text-secondary mt-2 leading-relaxed">
+              <p className="text-xs sm:text-sm text-zinc-400 mt-2 leading-relaxed font-sans">
                 {stat.description}
               </p>
             </div>

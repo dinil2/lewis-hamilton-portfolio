@@ -34,3 +34,4 @@ export const ANIM_CONFIG = {
 };
 
 export { gsap, ScrollTrigger };
+

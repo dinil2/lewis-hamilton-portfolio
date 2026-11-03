@@ -24,7 +24,7 @@
     min-height: 100svh;
     overflow-x: hidden;
     position: relative;
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   }
 
   /* Accessible focus indicators */
@@ -36,7 +36,7 @@
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -44,7 +44,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--surface-border);
+  background: #27272A;
   border-radius: 9999px;
 }
 
@@ -52,21 +52,19 @@
   background: var(--rosso-corsa);
 }
 
-/* Grain texture overlay */
-.grain-overlay {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
-  pointer-events: none;
+/* Subtle carbon texture & circuit grid backdrop */
+.carbon-grid-bg {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
 }
 
-/* Subtle circuit contour lines pattern */
 .circuit-contour-bg {
-  background-image: radial-gradient(circle at 50% 30%, rgba(225, 6, 0, 0.03) 0%, transparent 60%),
-    repeating-radial-gradient(circle at 50% 50%, transparent 0, transparent 40px, rgba(14, 14, 14, 0.02) 40px, rgba(14, 14, 14, 0.02) 41px);
-}
-
-.dark .circuit-contour-bg {
-  background-image: radial-gradient(circle at 50% 30%, rgba(225, 6, 0, 0.06) 0%, transparent 60%),
-    repeating-radial-gradient(circle at 50% 50%, transparent 0, transparent 40px, rgba(246, 244, 239, 0.02) 40px, rgba(246, 244, 239, 0.02) 41px);
+  background-image: radial-gradient(circle at 50% 30%, rgba(225, 6, 0, 0.08) 0%, transparent 60%),
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
 }
 
 /* Signature Hero Radial Mask Reveal */
@@ -74,13 +72,13 @@
   mask-image: radial-gradient(
     circle var(--reveal-r) at var(--reveal-x) var(--reveal-y),
     rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 0.95) 75%,
+    rgba(0, 0, 0, 0.96) 75%,
     rgba(0, 0, 0, 0) 100%
   );
   -webkit-mask-image: radial-gradient(
     circle var(--reveal-r) at var(--reveal-x) var(--reveal-y),
     rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 0.95) 75%,
+    rgba(0, 0, 0, 0.96) 75%,
     rgba(0, 0, 0, 0) 100%
   );
 }
@@ -88,8 +86,8 @@
 /* Glass UI card */
 .glass-panel {
   background: var(--surface-glass);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--surface-border);
 }
 

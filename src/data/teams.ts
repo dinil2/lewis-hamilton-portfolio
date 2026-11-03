@@ -85,3 +85,4 @@ export const juniorCareer: JuniorMilestone[] = [
     description: 'Won the GP2 title with ART Grand Prix, featuring an unforgettable charge from 8th to 2nd in Istanbul.',
   },
 ];
+

@@ -32,23 +32,23 @@ export const SectionWrapper: React.FC<SectionWrapperProps> = ({
         {(title || subtitle || badge) && (
           <div className="mb-12 md:mb-16 max-w-3xl">
             {badge && (
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rosso/10 border border-rosso/20 text-rosso text-xs font-mono font-semibold uppercase tracking-widest mb-3">
-                <span className="w-1.5 h-1.5 rounded-full bg-rosso" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rosso/10 border border-rosso/20 text-rosso text-xs font-telemetry font-bold uppercase tracking-widest mb-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-rosso animate-pulse" />
                 <span>{badge}</span>
               </div>
             )}
             {subtitle && (
-              <span className="block text-xs font-mono tracking-widest text-text-muted uppercase mb-1">
+              <span className="block text-xs font-telemetry tracking-widest text-zinc-500 uppercase mb-1">
                 {subtitle}
               </span>
             )}
             {title && (
-              <h2 className="font-displayGrotesk font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-text-primary tracking-tight leading-[1.05]">
+              <h2 className="font-display font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white tracking-tight leading-[1.05]">
                 {title}
               </h2>
             )}
             {description && (
-              <p className="mt-3 text-sm sm:text-base text-text-secondary leading-relaxed">
+              <p className="mt-3 text-sm sm:text-base text-zinc-400 leading-relaxed font-sans">
                 {description}
               </p>
             )}
@@ -60,3 +60,4 @@ export const SectionWrapper: React.FC<SectionWrapperProps> = ({
     </section>
   );
 };
+

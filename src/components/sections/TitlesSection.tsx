@@ -17,42 +17,42 @@ export const TitlesSection: React.FC = () => {
         {worldTitles.map((title, index) => (
           <div
             key={title.year}
-            className="sticky rounded-card glass-panel border border-surface-border p-6 sm:p-10 shadow-xl transition-all duration-300"
+            className="sticky rounded-2xl bg-[#111114] border border-white/10 p-6 sm:p-10 shadow-2xl transition-all duration-300"
             style={{
               top: `calc(100px + ${index * 20}px)`,
               zIndex: index + 1,
             }}
           >
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-surface-border pb-4 mb-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-4 mb-6">
               <div className="flex items-center gap-4">
-                <span className="font-displayGrotesk font-black text-5xl sm:text-6xl text-rosso tracking-tight">
+                <span className="font-display font-black text-5xl sm:text-6xl text-rosso tracking-tight">
                   {title.year}
                 </span>
                 <div>
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rosso/10 text-rosso text-xs font-mono font-bold uppercase">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rosso/10 text-rosso text-xs font-telemetry font-bold uppercase">
                     <Trophy className="w-3.5 h-3.5" />
                     <span>Crown #{index + 1}</span>
                   </span>
-                  <h3 className="font-displayGrotesk font-black text-xl sm:text-2xl text-text-primary mt-1">
+                  <h3 className="font-display font-black text-xl sm:text-2xl text-white mt-1">
                     {title.team}
                   </h3>
                 </div>
               </div>
 
               {/* Chassis Mark */}
-              <div className="text-left sm:text-right font-mono text-xs text-text-muted">
+              <div className="text-left sm:text-right font-mono text-xs text-zinc-500">
                 <span className="block uppercase text-[10px] tracking-wider">Chassis</span>
-                <span className="font-bold text-text-primary text-sm">{title.car}</span>
+                <span className="font-bold text-white text-sm">{title.car}</span>
               </div>
             </div>
 
             {/* Content & Stats */}
-            <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center">
+            <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center font-sans">
               <div className="sm:col-span-7">
-                <p className="text-sm sm:text-base text-text-secondary leading-relaxed mb-4">
+                <p className="text-sm sm:text-base text-zinc-300 leading-relaxed mb-4">
                   {title.notes}
                 </p>
-                <div className="flex items-center gap-2 text-xs font-mono text-text-muted">
+                <div className="flex items-center gap-2 text-xs font-mono text-zinc-500">
                   <CheckCircle2 className="w-4 h-4 text-rosso" />
                   <span>World Drivers' Championship Confirmed</span>
                 </div>
@@ -60,15 +60,15 @@ export const TitlesSection: React.FC = () => {
 
               {/* Wins & Points Tiles */}
               <div className="sm:col-span-5 grid grid-cols-2 gap-3">
-                <div className="p-4 rounded-xl bg-cream-100/70 dark:bg-raceDark-card/70 border border-surface-border text-center">
-                  <span className="block text-[10px] font-mono text-text-muted uppercase">Season Wins</span>
-                  <span className="text-3xl font-displayGrotesk font-black text-text-primary">
+                <div className="p-4 rounded-xl bg-[#18181C] border border-white/5 text-center">
+                  <span className="block text-[10px] font-mono text-zinc-500 uppercase">Season Wins</span>
+                  <span className="text-3xl font-display font-black text-white">
                     {title.wins}
                   </span>
                 </div>
-                <div className="p-4 rounded-xl bg-cream-100/70 dark:bg-raceDark-card/70 border border-surface-border text-center">
-                  <span className="block text-[10px] font-mono text-text-muted uppercase">Points</span>
-                  <span className="text-3xl font-displayGrotesk font-black text-rosso">
+                <div className="p-4 rounded-xl bg-[#18181C] border border-white/5 text-center">
+                  <span className="block text-[10px] font-mono text-zinc-500 uppercase">Points</span>
+                  <span className="text-3xl font-display font-black text-rosso">
                     {title.points}
                   </span>
                 </div>

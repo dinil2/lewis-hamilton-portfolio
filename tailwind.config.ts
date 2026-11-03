@@ -6,12 +6,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        cream: {
-          50: '#FCFBF8',
-          100: '#F6F4EF',
-          200: '#EBE7DD',
-          300: '#DFD8C9',
-          400: '#CEC3AD',
+        darkCarbon: {
+          DEFAULT: '#080809',
+          surface: '#111113',
+          card: '#161619',
+          border: 'rgba(255, 255, 255, 0.08)',
+          subtle: '#222226',
         },
         rosso: {
           DEFAULT: '#E10600',
@@ -20,42 +20,49 @@ const config: Config = {
           glow: 'rgba(225, 6, 0, 0.4)',
         },
         ferrariYellow: {
-          DEFAULT: '#FFF200',
-          dark: '#E6D900',
+          DEFAULT: '#FFE500',
+          dark: '#E6CF00',
         },
         raceDark: {
-          DEFAULT: '#0E0E0E',
-          surface: '#171717',
-          card: '#1F1F1F',
-          border: '#2E2E2E',
+          DEFAULT: '#080809',
+          surface: '#111113',
+          card: '#161619',
+          border: 'rgba(255, 255, 255, 0.08)',
         },
       },
       fontFamily: {
-        serifTitle: ['"Italiana"', '"Cinzel"', '"Playfair Display"', 'Georgia', 'serif'],
-        displayGrotesk: ['"Cabinet Grotesk"', '"Syne"', '"Barlow Condensed"', '"Impact"', 'sans-serif'],
+        display: ['"Outfit"', '"Space Grotesk"', 'system-ui', 'sans-serif'],
+        displayGrotesk: ['"Outfit"', '"Space Grotesk"', 'system-ui', 'sans-serif'],
+        telemetry: ['"Chakra Petch"', '"JetBrains Mono"', 'monospace'],
+        serifTitle: ['"Outfit"', 'sans-serif'], // Replaced Italiana with modern bold Outfit
         sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       borderRadius: {
         pill: '9999px',
-        card: '20px',
+        card: '16px',
       },
       letterSpacing: {
-        widestHeader: '0.15em',
-        compressed: '-0.04em',
+        widestHeader: '0.2em',
+        compressed: '-0.03em',
       },
       animation: {
-        'pulse-subtle': 'pulseSubtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'marquee': 'marquee 30s linear infinite',
+        'pulse-subtle': 'pulseSubtle 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'marquee': 'marquee 25s linear infinite',
+        'scanline': 'scanline 4s linear infinite',
       },
       keyframes: {
         pulseSubtle: {
           '0%, 100%': { opacity: '1' },
-          '50%': { opacity: '0.6' },
+          '50%': { opacity: '0.5' },
         },
         marquee: {
           '0%': { transform: 'translateX(0%)' },
           '100%': { transform: 'translateX(-50%)' },
+        },
+        scanline: {
+          '0%': { transform: 'translateY(-100%)' },
+          '100%': { transform: 'translateY(1000%)' },
         },
       },
     },

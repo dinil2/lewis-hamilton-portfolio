@@ -32,3 +32,4 @@ export const identityData = {
     brother: 'Nicolas Hamilton',
   },
 };
+

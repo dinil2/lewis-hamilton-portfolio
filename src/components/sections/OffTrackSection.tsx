@@ -28,34 +28,34 @@ export const OffTrackSection: React.FC = () => {
           return (
             <div
               key={project.title}
-              className="p-6 sm:p-8 rounded-card glass-panel border border-surface-border flex flex-col justify-between hover:-translate-y-1 hover:border-rosso/40 transition-all duration-300"
+              className="p-6 sm:p-8 rounded-2xl bg-[#111114] border border-white/10 flex flex-col justify-between hover:-translate-y-1 hover:border-rosso/50 transition-all duration-300 shadow-xl"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <span className="p-2.5 rounded-xl bg-cream-200/60 dark:bg-raceDark-card text-rosso">
+                  <span className="p-2.5 rounded-xl bg-[#18181C] text-rosso border border-white/5">
                     <Icon className="w-5 h-5" />
                   </span>
-                  <span className="font-mono text-xs text-text-muted">{project.year}</span>
+                  <span className="font-telemetry text-xs text-zinc-500">{project.year}</span>
                 </div>
 
-                <span className="text-[11px] font-mono uppercase tracking-wider text-rosso font-bold block mb-1">
+                <span className="text-[11px] font-telemetry uppercase tracking-wider text-rosso font-bold block mb-1">
                   {project.category}
                 </span>
 
-                <h3 className="font-displayGrotesk font-black text-xl text-text-primary mb-3">
+                <h3 className="font-display font-black text-xl text-white mb-3">
                   {project.title}
                 </h3>
 
-                <p className="text-xs sm:text-sm text-text-secondary leading-relaxed mb-6">
+                <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed mb-6 font-sans">
                   {project.description}
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-surface-border text-xs text-text-muted flex items-start gap-2">
-                <span className="font-mono font-bold text-rosso uppercase text-[10px] shrink-0 mt-0.5">
+              <div className="pt-4 border-t border-white/10 text-xs text-zinc-400 flex items-start gap-2 font-sans">
+                <span className="font-telemetry font-bold text-rosso uppercase text-[10px] shrink-0 mt-0.5">
                   Impact:
                 </span>
-                <span className="text-text-secondary">{project.impact}</span>
+                <span className="text-zinc-300">{project.impact}</span>
               </div>
             </div>
           );

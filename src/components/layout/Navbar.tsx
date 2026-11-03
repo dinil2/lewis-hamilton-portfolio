@@ -112,8 +112,8 @@ export const Navbar: React.FC<NavbarProps> = ({ isDark, toggleDark }) => {
                   href={item.href}
                   className={`relative px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all ${
                     isActive
-                      ? 'text-rosso bg-rosso/10'
-                      : 'text-text-secondary hover:text-text-primary hover:bg-cream-200/50 dark:hover:bg-raceDark-card/50'
+                      ? 'text-rosso bg-rosso/15'
+                      : 'text-zinc-400 hover:text-white hover:bg-white/5'
                   }`}
                 >
                   {item.label}
@@ -130,8 +130,8 @@ export const Navbar: React.FC<NavbarProps> = ({ isDark, toggleDark }) => {
             {/* Night Race Mode Toggle */}
             <button
               onClick={toggleDark}
-              aria-label="Toggle Night Race Dark Mode"
-              className="p-2 rounded-full hover:bg-cream-200/60 dark:hover:bg-raceDark-card text-text-secondary hover:text-text-primary transition-colors"
+              aria-label="Toggle Theme Mode"
+              className="p-2 rounded-full hover:bg-white/10 text-zinc-300 hover:text-white transition-colors"
             >
               {isDark ? (
                 <Sun className="w-4 h-4 text-ferrariYellow" />
@@ -173,3 +173,4 @@ export const Navbar: React.FC<NavbarProps> = ({ isDark, toggleDark }) => {
     </>
   );
 };
+

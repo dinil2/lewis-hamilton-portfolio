@@ -32,3 +32,4 @@ export const eraHelmets: EraHelmet[] = [
     quote: '"Wearing the red suit with my signature yellow helmet is childhood dreams made tangible."',
   },
 ];
+

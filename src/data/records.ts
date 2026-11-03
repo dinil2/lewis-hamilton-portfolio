@@ -62,3 +62,4 @@ export const milestoneRecords: MilestoneRecord[] = [
     tag: 'Scoring Record',
   },
 ];
+

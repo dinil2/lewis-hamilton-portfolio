@@ -48,13 +48,13 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed inset-0 z-50 flex flex-col justify-between bg-cream-100/98 dark:bg-raceDark/98 backdrop-blur-xl px-6 py-8"
+          className="fixed inset-0 z-50 flex flex-col justify-between bg-[#080809]/98 backdrop-blur-xl px-6 py-8"
         >
           {/* Header row */}
-          <div className="flex items-center justify-between border-b border-surface-border pb-4">
+          <div className="flex items-center justify-between border-b border-white/10 pb-4">
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-rosso animate-ping" />
-              <span className="font-displayGrotesk font-black text-xl tracking-tight text-text-primary">
+              <span className="font-display font-black text-xl tracking-tight text-white">
                 LH44 ARCHIVE
               </span>
             </div>
@@ -62,17 +62,17 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
             <div className="flex items-center gap-3">
               <button
                 onClick={toggleDark}
-                className="p-2.5 rounded-full bg-cream-200/80 dark:bg-raceDark-card text-text-primary border border-surface-border"
-                aria-label="Toggle Night Race theme"
+                className="p-2.5 rounded-full bg-[#18181C] text-white border border-white/10"
+                aria-label="Toggle theme"
               >
-                {isDark ? <Sun className="w-5 h-5 text-ferrariYellow" /> : <Moon className="w-5 h-5 text-text-primary" />}
+                {isDark ? <Sun className="w-5 h-5 text-ferrariYellow" /> : <Moon className="w-5 h-5 text-white" />}
               </button>
               <button
                 onClick={onClose}
-                className="p-2.5 rounded-full bg-cream-200/80 dark:bg-raceDark-card text-text-primary border border-surface-border"
+                className="p-2.5 rounded-full bg-[#18181C] text-white border border-white/10"
                 aria-label="Close navigation menu"
               >
-                <X className="w-5 h-5 text-text-primary" />
+                <X className="w-5 h-5 text-white" />
               </button>
             </div>
           </div>
@@ -89,15 +89,15 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
                   initial={{ opacity: 0, x: -25 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.05 + index * 0.04, duration: 0.4 }}
-                  className="flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-cream-200/60 dark:hover:bg-raceDark-card/60 transition-colors group"
+                  className="flex items-center justify-between py-2.5 px-3 rounded-xl hover:bg-white/5 transition-colors group"
                 >
                   <div className="flex items-center gap-3">
                     <Icon className="w-4 h-4 text-rosso group-hover:scale-110 transition-transform" />
-                    <span className="font-displayGrotesk font-extrabold text-2xl tracking-tight text-text-primary group-hover:text-rosso transition-colors">
+                    <span className="font-display font-bold text-2xl tracking-tight text-white group-hover:text-rosso transition-colors">
                       {link.label}
                     </span>
                   </div>
-                  <span className="text-xs font-mono text-text-muted">
+                  <span className="text-xs font-mono text-zinc-500">
                     0{index + 1}
                   </span>
                 </motion.a>
@@ -125,3 +125,4 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
     </AnimatePresence>
   );
 };
+

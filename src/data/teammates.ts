@@ -74,3 +74,4 @@ export const teammates: Teammate[] = [
     winsTogether: 6,
   },
 ];
+

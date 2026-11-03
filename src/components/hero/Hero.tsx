@@ -18,17 +18,28 @@ export const Hero: React.FC = () => {
       const isMobile = window.matchMedia('(max-width: 767px)').matches;
 
       // Master entrance timeline
-      const tl = gsap.timeline({ delay: 0.2 });
+      const tl = gsap.timeline({ delay: 0.1 });
 
       tl.from('.hero-wordmark-sub', {
         y: 20,
         opacity: 0,
-        duration: 0.8,
+        duration: 0.7,
         ease: 'power3.out',
       })
         .from(
           '.hero-name-lewis',
           {
+            y: 30,
+            opacity: 0,
+            duration: 0.8,
+            ease: 'power4.out',
+          },
+          '-=0.5'
+        )
+        .from(
+          '.hero-name-hamilton',
+          {
+            scale: 0.96,
             y: 40,
             opacity: 0,
             duration: 0.9,
@@ -37,37 +48,26 @@ export const Hero: React.FC = () => {
           '-=0.6'
         )
         .from(
-          '.hero-name-hamilton',
-          {
-            scale: 0.95,
-            y: 50,
-            opacity: 0,
-            duration: 1,
-            ease: 'power4.out',
-          },
-          '-=0.7'
-        )
-        .from(
           portraitWrapRef.current,
           {
-            y: 70,
+            y: 50,
             opacity: 0,
-            scale: 0.96,
-            duration: 1.1,
+            scale: 0.97,
+            duration: 1.0,
             ease: 'power3.out',
           },
-          '-=0.8'
+          '-=0.7'
         )
         .from(
           '.hero-stagger-item',
           {
-            y: 30,
+            y: 25,
             opacity: 0,
-            stagger: 0.12,
-            duration: 0.8,
+            stagger: 0.1,
+            duration: 0.7,
             ease: 'power3.out',
           },
-          '-=0.7'
+          '-=0.6'
         );
 
       // Desktop Mouse Parallax
@@ -81,22 +81,22 @@ export const Hero: React.FC = () => {
           const moveY = (clientY - centerY) / centerY;
 
           gsap.to(portraitWrapRef.current, {
-            x: moveX * 14,
-            y: moveY * 10,
+            x: moveX * 12,
+            y: moveY * 8,
             duration: 1.2,
             ease: 'power2.out',
           });
 
           gsap.to(wordmarkRef.current, {
-            x: moveX * -8,
-            y: moveY * -6,
+            x: moveX * -6,
+            y: moveY * -4,
             duration: 1.2,
             ease: 'power2.out',
           });
 
           gsap.to(cardsWrapRef.current, {
-            x: moveX * 8,
-            y: moveY * 6,
+            x: moveX * 6,
+            y: moveY * 4,
             duration: 1.2,
             ease: 'power2.out',
           });
@@ -114,7 +114,7 @@ export const Hero: React.FC = () => {
     <section
       ref={heroRef}
       id="hero"
-      className="relative w-full min-h-[100svh] flex flex-col justify-between pt-24 pb-8 px-4 sm:px-6 lg:px-12 overflow-hidden bg-cream-100 dark:bg-raceDark transition-colors duration-500"
+      className="relative w-full min-h-[100svh] flex flex-col justify-between pt-24 pb-8 px-4 sm:px-6 lg:px-12 overflow-hidden bg-[#080809] text-white carbon-grid-bg transition-colors duration-500"
     >
       <HeroBackdrop />
 
@@ -122,40 +122,39 @@ export const Hero: React.FC = () => {
       <div className="relative z-10 w-full max-w-7xl mx-auto my-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         {/* Left Column: Editorial Wordmark & Bio */}
         <div ref={wordmarkRef} className="lg:col-span-6 flex flex-col items-start justify-center">
-          {/* Era Tag */}
-          <div className="hero-wordmark-sub inline-flex items-center gap-2 mb-4 px-3.5 py-1 rounded-full bg-cream-200/80 dark:bg-raceDark-card/80 border border-surface-border text-xs font-mono text-text-secondary tracking-widest uppercase">
-            <span className="w-2 h-2 rounded-full bg-rosso" />
-            <span>Formula 1 World Champion · 2007–2026</span>
+          {/* Scuderia Ferrari Tag */}
+          <div className="hero-wordmark-sub inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full bg-[#161619] border border-white/10 text-xs font-telemetry text-zinc-300 tracking-widest uppercase">
+            <span className="w-2 h-2 rounded-full bg-rosso animate-pulse" />
+            <span>SCUDERIA FERRARI HP · #44</span>
           </div>
 
-          {/* High-contrast Editorial Wordmark Lockup */}
+          {/* High-contrast Precision Typography Lockup */}
           <div className="flex flex-col select-none mb-4">
-            <span className="hero-name-lewis font-serifTitle italic text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-text-primary tracking-wide">
-              Sir Lewis
+            <span className="hero-name-lewis font-telemetry font-bold text-2xl sm:text-3xl lg:text-4xl tracking-widest uppercase text-rosso">
+              SIR LEWIS
             </span>
-            <span className="hero-name-hamilton font-displayGrotesk font-black text-6xl sm:text-7xl md:text-8xl lg:text-9xl tracking-compressed uppercase text-text-primary leading-[0.88] mt-1">
-              Hamilton
+            <span className="hero-name-hamilton font-display font-black text-6xl sm:text-7xl md:text-8xl lg:text-9xl tracking-compressed uppercase text-white leading-[0.88] mt-1">
+              HAMILTON
             </span>
           </div>
 
-          {/* Punchy Editorial Subhead */}
-          <p className="hero-stagger-item text-base sm:text-lg text-text-secondary max-w-xl mb-6 font-normal leading-relaxed">
-            Seven World Titles. 106 victories. 105 poles. Entering his second season piloting the
-            Rosso Corsa scarlet of Scuderia Ferrari, redefining speed, culture, and motorsport immortality.
+          {/* Punchy Bio */}
+          <p className="hero-stagger-item text-base sm:text-lg text-zinc-300 max-w-xl mb-6 font-normal leading-relaxed">
+            Seven World Championships. 106 Grand Prix victories. 105 pole positions. Entering his second season piloting the Rosso Corsa scarlet of Scuderia Ferrari, redefining speed and motorsport history.
           </p>
 
           {/* Key Accolade Badges */}
-          <div className="hero-stagger-item flex flex-wrap gap-3 mb-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cream-200/60 dark:bg-raceDark-card/60 border border-surface-border text-xs font-semibold text-text-primary">
+          <div className="hero-stagger-item flex flex-wrap gap-2.5 mb-8">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#161619] border border-white/10 text-xs font-semibold text-white">
               <Trophy className="w-3.5 h-3.5 text-ferrariYellow" />
               <span>7× World Champion</span>
             </div>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cream-200/60 dark:bg-raceDark-card/60 border border-surface-border text-xs font-semibold text-text-primary">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#161619] border border-white/10 text-xs font-semibold text-white">
               <Zap className="w-3.5 h-3.5 text-rosso" />
-              <span>106 F1 Wins (Record)</span>
+              <span>106 F1 Wins (All-Time Record)</span>
             </div>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cream-200/60 dark:bg-raceDark-card/60 border border-surface-border text-xs font-semibold text-text-primary">
-              <ShieldCheck className="w-3.5 h-3.5 text-text-muted" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#161619] border border-white/10 text-xs font-semibold text-white">
+              <ShieldCheck className="w-3.5 h-3.5 text-zinc-400" />
               <span>MBE · Knight Bachelor</span>
             </div>
           </div>
@@ -185,9 +184,9 @@ export const Hero: React.FC = () => {
         <a
           href="#numbers"
           aria-label="Scroll to Career in Numbers section"
-          className="group inline-flex flex-col items-center gap-1.5 text-[11px] font-mono tracking-widest text-text-muted hover:text-rosso transition-colors"
+          className="group inline-flex flex-col items-center gap-1.5 text-[11px] font-mono tracking-widest text-zinc-500 hover:text-rosso transition-colors"
         >
-          <span className="uppercase text-[10px]">Explore Legacy</span>
+          <span className="uppercase text-[10px]">SCROLL TO EXPLORE</span>
           <ChevronDown className="w-4 h-4 animate-bounce text-rosso" />
         </a>
       </div>

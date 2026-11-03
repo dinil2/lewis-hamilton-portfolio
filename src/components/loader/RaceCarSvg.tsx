@@ -64,3 +64,4 @@ export const RaceCarSvg: React.FC<{ className?: string }> = ({ className = '' })
     </svg>
   );
 };
+

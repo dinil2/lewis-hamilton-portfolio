@@ -52,10 +52,10 @@ export const GallerySection: React.FC = () => {
           <button
             key={cat}
             onClick={() => setActiveFilter(cat)}
-            className={`px-4 py-1.5 rounded-full text-xs font-mono tracking-wider transition-all border ${
+            className={`px-4 py-1.5 rounded-full text-xs font-telemetry tracking-wider transition-all border ${
               activeFilter === cat
-                ? 'bg-rosso text-white border-rosso font-bold shadow-md'
-                : 'glass-panel text-text-secondary border-surface-border hover:border-rosso/50'
+                ? 'bg-rosso text-white border-rosso font-bold shadow-lg shadow-rosso/20'
+                : 'bg-[#121215] text-zinc-400 border-white/10 hover:border-rosso/50 hover:text-white'
             }`}
           >
             {cat}
@@ -69,9 +69,9 @@ export const GallerySection: React.FC = () => {
           <div
             key={item.id}
             onClick={() => setSelectedItem(item)}
-            className="group relative rounded-card overflow-hidden glass-panel border border-surface-border cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-rosso/50"
+            className="group relative rounded-2xl overflow-hidden bg-[#111114] border border-white/10 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:border-rosso/50 shadow-xl"
           >
-            <div className="relative aspect-[16/10] overflow-hidden bg-cream-200/50 dark:bg-raceDark-card">
+            <div className="relative aspect-[16/10] overflow-hidden bg-[#0D0D10]">
               <ImageWithFallback
                 src={`/assets/gallery/${item.id}.webp`}
                 alt={item.title}
@@ -81,26 +81,26 @@ export const GallerySection: React.FC = () => {
               />
 
               {/* Hover Overlay */}
-              <div className="absolute inset-0 bg-raceDark/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
-                <span className="p-3 rounded-full bg-rosso text-white shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform">
+              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
+                <span className="p-3 rounded-full bg-rosso text-white shadow-xl transform translate-y-3 group-hover:translate-y-0 transition-transform">
                   <Maximize2 className="w-5 h-5" />
                 </span>
               </div>
 
               {/* Tag pill */}
-              <div className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-raceDark/70 backdrop-blur-md text-[10px] font-mono text-white">
+              <div className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-black/70 backdrop-blur-md text-[10px] font-mono text-white border border-white/10">
                 {item.year}
               </div>
             </div>
 
             <div className="p-5">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-rosso font-bold block mb-1">
+              <span className="text-[10px] font-telemetry uppercase tracking-wider text-rosso font-bold block mb-1">
                 {item.category}
               </span>
-              <h3 className="font-displayGrotesk font-black text-lg text-text-primary tracking-tight mb-2">
+              <h3 className="font-display font-black text-lg text-white tracking-tight mb-2">
                 {item.title}
               </h3>
-              <p className="text-xs text-text-secondary line-clamp-2 leading-relaxed">
+              <p className="text-xs text-zinc-400 line-clamp-2 leading-relaxed font-sans">
                 {item.caption}
               </p>
             </div>
@@ -116,24 +116,24 @@ export const GallerySection: React.FC = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedItem(null)}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-raceDark/85 backdrop-blur-md"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md"
           >
             <motion.div
               initial={{ scale: 0.95 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.95 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-4xl rounded-card overflow-hidden bg-cream-50 dark:bg-raceDark-surface border border-surface-border shadow-2xl flex flex-col"
+              className="relative w-full max-w-4xl rounded-2xl overflow-hidden bg-[#121215] border border-white/10 shadow-2xl flex flex-col text-white"
             >
               <button
                 onClick={() => setSelectedItem(null)}
-                className="absolute top-4 right-4 z-20 p-2.5 rounded-full bg-raceDark/60 hover:bg-raceDark text-white transition-colors"
+                className="absolute top-4 right-4 z-20 p-2.5 rounded-full bg-black/60 hover:bg-rosso text-white transition-colors"
                 aria-label="Close Lightbox"
               >
                 <X className="w-5 h-5" />
               </button>
 
-              <div className="relative w-full aspect-[16/10] bg-raceDark overflow-hidden flex items-center justify-center">
+              <div className="relative w-full aspect-[16/10] bg-[#0A0A0C] overflow-hidden flex items-center justify-center">
                 <ImageWithFallback
                   src={`/assets/gallery/${selectedItem.id}.webp`}
                   alt={selectedItem.title}
@@ -150,7 +150,7 @@ export const GallerySection: React.FC = () => {
                     const prev = (idx - 1 + filteredItems.length) % filteredItems.length;
                     setSelectedItem(filteredItems[prev]);
                   }}
-                  className="absolute left-4 p-2.5 rounded-full bg-raceDark/60 hover:bg-raceDark text-white transition-colors"
+                  className="absolute left-4 p-2.5 rounded-full bg-black/60 hover:bg-rosso text-white transition-colors"
                   aria-label="Previous image"
                 >
                   <ChevronLeft className="w-5 h-5" />
@@ -162,7 +162,7 @@ export const GallerySection: React.FC = () => {
                     const next = (idx + 1) % filteredItems.length;
                     setSelectedItem(filteredItems[next]);
                   }}
-                  className="absolute right-4 p-2.5 rounded-full bg-raceDark/60 hover:bg-raceDark text-white transition-colors"
+                  className="absolute right-4 p-2.5 rounded-full bg-black/60 hover:bg-rosso text-white transition-colors"
                   aria-label="Next image"
                 >
                   <ChevronRight className="w-5 h-5" />
@@ -171,14 +171,14 @@ export const GallerySection: React.FC = () => {
 
               <div className="p-6 sm:p-8">
                 <div className="flex items-center gap-3 mb-2">
-                  <span className="text-xs font-mono text-rosso font-bold uppercase">
+                  <span className="text-xs font-telemetry text-rosso font-bold uppercase">
                     {selectedItem.category} · {selectedItem.year}
                   </span>
                   <div className="flex gap-1.5">
                     {selectedItem.tags.map((t) => (
                       <span
                         key={t}
-                        className="px-2 py-0.5 rounded bg-cream-200 dark:bg-raceDark text-[10px] font-mono text-text-muted"
+                        className="px-2 py-0.5 rounded bg-[#18181C] text-[10px] font-mono text-zinc-400 border border-white/5"
                       >
                         #{t}
                       </span>
@@ -186,10 +186,10 @@ export const GallerySection: React.FC = () => {
                   </div>
                 </div>
 
-                <h3 className="font-displayGrotesk font-black text-2xl text-text-primary mb-2">
+                <h3 className="font-display font-black text-2xl text-white mb-2">
                   {selectedItem.title}
                 </h3>
-                <p className="text-sm text-text-secondary leading-relaxed">
+                <p className="text-sm text-zinc-300 leading-relaxed font-sans">
                   {selectedItem.caption}
                 </p>
               </div>

@@ -58,3 +58,4 @@ export const worldTitles: WorldTitle[] = [
     notes: 'Equalled Michael Schumacher with a 7th World Championship after a legendary wet-weather masterclass in Turkey.',
   },
 ];
+

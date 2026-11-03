@@ -231,3 +231,4 @@ export const FerrariSf26Svg: React.FC<FerrariSf26SvgProps> = ({ isExploded, clas
     </svg>
   );
 };
+

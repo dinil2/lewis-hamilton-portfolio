@@ -34,18 +34,18 @@ export const NextRaceCard: React.FC = () => {
         </p>
 
         {/* 2026 Season Quick Stats */}
-        <div className="grid grid-cols-3 gap-2 pt-2 border-t border-surface-border text-center">
-          <div className="bg-cream-200/50 dark:bg-raceDark-card/50 py-1.5 px-2 rounded-xl">
-            <span className="block text-[10px] font-mono text-text-muted uppercase">Rank</span>
-            <span className="text-sm font-extrabold text-text-primary">P{standing}</span>
+        <div className="grid grid-cols-3 gap-2 pt-2 border-t border-white/10 text-center">
+          <div className="bg-[#18181C] py-1.5 px-2 rounded-xl border border-white/5">
+            <span className="block text-[10px] font-mono text-zinc-500 uppercase">Rank</span>
+            <span className="text-sm font-extrabold text-white">P{standing}</span>
           </div>
-          <div className="bg-cream-200/50 dark:bg-raceDark-card/50 py-1.5 px-2 rounded-xl">
-            <span className="block text-[10px] font-mono text-text-muted uppercase">Points</span>
+          <div className="bg-[#18181C] py-1.5 px-2 rounded-xl border border-white/5">
+            <span className="block text-[10px] font-mono text-zinc-500 uppercase">Points</span>
             <span className="text-sm font-extrabold text-rosso">{points}</span>
           </div>
-          <div className="bg-cream-200/50 dark:bg-raceDark-card/50 py-1.5 px-2 rounded-xl">
-            <span className="block text-[10px] font-mono text-text-muted uppercase">Win / Pole</span>
-            <span className="text-sm font-extrabold text-text-primary">{wins} / {poles}</span>
+          <div className="bg-[#18181C] py-1.5 px-2 rounded-xl border border-white/5">
+            <span className="block text-[10px] font-mono text-zinc-500 uppercase">Win / Pole</span>
+            <span className="text-sm font-extrabold text-white">{wins} / {poles}</span>
           </div>
         </div>
 
@@ -60,3 +60,4 @@ export const NextRaceCard: React.FC = () => {
     </div>
   );
 };
+

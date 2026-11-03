@@ -106,3 +106,4 @@ export const season2026: Season2026Data = {
   teammate: 'Charles Leclerc',
   regulationEra: 'Active Aerodynamics & 50/50 Turbo Hybrid Era',
 };
+

@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://lewis-hamilton.netlify.app/sitemap.xml
+

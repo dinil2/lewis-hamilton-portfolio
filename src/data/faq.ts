@@ -50,3 +50,4 @@ export const faqItems: FAQItem[] = [
       'Hamilton has had seven Formula 1 teammates: Fernando Alonso (2007, McLaren), Heikki Kovalainen (2008-09, McLaren), Jenson Button (2010-12, McLaren), Nico Rosberg (2013-16, Mercedes), Valtteri Bottas (2017-21, Mercedes), George Russell (2022-24, Mercedes), and Charles Leclerc (2025-present, Ferrari).',
   },
 ];
+

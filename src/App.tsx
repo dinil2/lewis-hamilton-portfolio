@@ -24,12 +24,12 @@ export function App() {
   // Initialize buttery-smooth Lenis scroll synchronized with GSAP
   useLenis();
 
-  // Dark mode ("Night Race") state
+  // Default to Dark Carbon Mode (High-tech Formula 1 Aesthetic)
   const [isDark, setIsDark] = useState<boolean>(() => {
-    if (typeof window === 'undefined') return false;
+    if (typeof window === 'undefined') return true;
     const saved = localStorage.getItem('theme');
     if (saved) return saved === 'dark';
-    return false; // Default light per Instruction 4
+    return true; // Default dark per user's direct feedback
   });
 
   const toggleDark = () => {
@@ -43,8 +43,10 @@ export function App() {
   useEffect(() => {
     if (isDark) {
       document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
     } else {
       document.documentElement.classList.remove('dark');
+      document.documentElement.classList.add('light');
     }
   }, [isDark]);
 

@@ -48,3 +48,4 @@ export const HeroBackdrop: React.FC = () => {
     </div>
   );
 };
+

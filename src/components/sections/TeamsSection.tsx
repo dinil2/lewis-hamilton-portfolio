@@ -17,7 +17,7 @@ export const TeamsSection: React.FC = () => {
         {teamChapters.map((team) => (
           <div
             key={team.id}
-            className="group relative p-8 rounded-card glass-panel border border-surface-border flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:border-rosso/40 hover:shadow-xl"
+            className="group relative p-8 rounded-2xl bg-[#111114] border border-white/10 flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:border-rosso/50 shadow-xl"
           >
             {/* Top Accent Strip */}
             <div
@@ -28,42 +28,42 @@ export const TeamsSection: React.FC = () => {
             <div>
               {/* Header */}
               <div className="flex items-center justify-between mb-4">
-                <span className="font-mono text-xs uppercase tracking-wider text-text-muted">
+                <span className="font-telemetry text-xs uppercase tracking-wider text-zinc-500">
                   {team.years}
                 </span>
-                <span className="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold uppercase tracking-wider bg-cream-200/60 dark:bg-raceDark text-text-primary">
+                <span className="px-2.5 py-0.5 rounded-full text-[11px] font-telemetry font-bold uppercase tracking-wider bg-[#18181C] text-white border border-white/5">
                   {team.titles > 0 ? `${team.titles} World Title${team.titles > 1 ? 's' : ''}` : 'Active Chapter'}
                 </span>
               </div>
 
-              <h3 className="font-displayGrotesk font-black text-3xl text-text-primary tracking-tight mb-1">
+              <h3 className="font-display font-black text-3xl text-white tracking-tight mb-1">
                 {team.name}
               </h3>
-              <p className="font-serifTitle italic text-sm text-text-muted mb-4">
+              <p className="font-telemetry text-xs text-rosso uppercase font-bold tracking-wider mb-4">
                 {team.era}
               </p>
 
-              <p className="text-sm text-text-secondary leading-relaxed mb-6">
+              <p className="text-sm text-zinc-300 leading-relaxed mb-6 font-sans">
                 {team.summary}
               </p>
 
               {/* Stats Bar */}
-              <div className="grid grid-cols-3 gap-2 p-3 rounded-xl bg-cream-200/40 dark:bg-raceDark-card/50 border border-surface-border text-center mb-6">
+              <div className="grid grid-cols-3 gap-2 p-3 rounded-xl bg-[#18181C] border border-white/5 text-center mb-6">
                 <div>
-                  <span className="block text-[10px] font-mono text-text-muted uppercase">Wins</span>
-                  <span className="text-xl font-displayGrotesk font-extrabold text-text-primary">
+                  <span className="block text-[10px] font-mono text-zinc-500 uppercase">Wins</span>
+                  <span className="text-xl font-display font-black text-white">
                     {team.wins}
                   </span>
                 </div>
                 <div>
-                  <span className="block text-[10px] font-mono text-text-muted uppercase">Poles</span>
-                  <span className="text-xl font-displayGrotesk font-extrabold text-text-primary">
+                  <span className="block text-[10px] font-mono text-zinc-500 uppercase">Poles</span>
+                  <span className="text-xl font-display font-black text-white">
                     {team.poles}
                   </span>
                 </div>
                 <div>
-                  <span className="block text-[10px] font-mono text-text-muted uppercase">Titles</span>
-                  <span className="text-xl font-displayGrotesk font-extrabold text-rosso">
+                  <span className="block text-[10px] font-mono text-zinc-500 uppercase">Titles</span>
+                  <span className="text-xl font-display font-black text-rosso">
                     {team.titles}
                   </span>
                 </div>
@@ -71,14 +71,14 @@ export const TeamsSection: React.FC = () => {
 
               {/* Teammates List */}
               <div className="mb-4">
-                <span className="block text-[11px] font-mono uppercase tracking-wider text-text-muted mb-1.5">
+                <span className="block text-[11px] font-mono uppercase tracking-wider text-zinc-500 mb-1.5">
                   Teammates Raced Alongside
                 </span>
                 <div className="flex flex-wrap gap-1.5">
                   {team.teammates.map((tm) => (
                     <span
                       key={tm}
-                      className="px-2.5 py-1 rounded-md bg-cream-100 dark:bg-raceDark text-xs font-medium text-text-secondary border border-surface-border/50"
+                      className="px-2.5 py-1 rounded-md bg-[#18181C] text-xs font-medium text-zinc-300 border border-white/5"
                     >
                       {tm}
                     </span>
@@ -88,7 +88,7 @@ export const TeamsSection: React.FC = () => {
             </div>
 
             {/* Key Highlight Banner */}
-            <div className="pt-4 border-t border-surface-border flex items-start gap-2.5 text-xs text-text-secondary">
+            <div className="pt-4 border-t border-white/10 flex items-start gap-2.5 text-xs text-zinc-400 font-sans">
               <Award className="w-4 h-4 text-rosso shrink-0 mt-0.5" />
               <span>{team.keyHighlight}</span>
             </div>
@@ -97,10 +97,10 @@ export const TeamsSection: React.FC = () => {
       </div>
 
       {/* Junior Career Strip */}
-      <div className="p-8 rounded-card glass-panel border border-surface-border">
+      <div className="p-8 rounded-2xl bg-[#111114] border border-white/10 shadow-xl">
         <div className="flex items-center gap-2 mb-6">
           <Zap className="w-4 h-4 text-ferrariYellow" />
-          <h3 className="font-displayGrotesk font-black text-xl text-text-primary uppercase tracking-tight">
+          <h3 className="font-display font-black text-xl text-white uppercase tracking-tight">
             The Junior Foundations (1993 – 2006)
           </h3>
         </div>
@@ -109,13 +109,13 @@ export const TeamsSection: React.FC = () => {
           {juniorCareer.slice(0, 4).map((item) => (
             <div
               key={item.year}
-              className="p-4 rounded-xl bg-cream-100/60 dark:bg-raceDark-card/50 border border-surface-border"
+              className="p-4 rounded-xl bg-[#18181C] border border-white/5"
             >
-              <span className="font-mono font-bold text-xs text-rosso">{item.year}</span>
-              <h4 className="font-displayGrotesk font-bold text-sm text-text-primary mt-1 mb-1">
+              <span className="font-telemetry font-bold text-xs text-rosso">{item.year}</span>
+              <h4 className="font-display font-bold text-sm text-white mt-1 mb-1">
                 {item.title}
               </h4>
-              <p className="text-xs text-text-secondary leading-relaxed">
+              <p className="text-xs text-zinc-400 leading-relaxed font-sans">
                 {item.description}
               </p>
             </div>

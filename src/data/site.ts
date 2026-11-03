@@ -11,3 +11,4 @@ export const siteConfig: SiteConfig = {
   snapshotLabel: 'After Round 19, Mexico City GP',
   currentYear: 2026,
 };
+

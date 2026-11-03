@@ -22,26 +22,26 @@ export const TeammatesSection: React.FC = () => {
           <div
             key={tm.name}
             onClick={() => setSelectedTeammate(tm)}
-            className="group p-6 rounded-card glass-panel border border-surface-border flex flex-col justify-between cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-rosso/40 hover:shadow-lg"
+            className="group p-6 rounded-2xl bg-[#111114] border border-white/10 flex flex-col justify-between cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-rosso/50 shadow-xl"
           >
             <div>
               <div className="flex items-center justify-between mb-3">
-                <span className="font-mono text-xs text-text-muted">{tm.years}</span>
-                <span className="px-2 py-0.5 rounded-full bg-cream-200 dark:bg-raceDark text-[10px] font-mono text-text-secondary uppercase">
+                <span className="font-telemetry text-xs text-zinc-500">{tm.years}</span>
+                <span className="px-2 py-0.5 rounded-full bg-[#18181C] text-[10px] font-telemetry text-zinc-400 uppercase border border-white/5">
                   {tm.team}
                 </span>
               </div>
 
-              <h3 className="font-displayGrotesk font-black text-2xl text-text-primary tracking-tight group-hover:text-rosso transition-colors">
+              <h3 className="font-display font-black text-2xl text-white tracking-tight group-hover:text-rosso transition-colors">
                 {tm.name}
               </h3>
 
-              <p className="text-xs text-text-secondary mt-3 line-clamp-3 leading-relaxed">
+              <p className="text-xs text-zinc-400 mt-3 line-clamp-3 leading-relaxed font-sans">
                 {tm.relationshipSummary}
               </p>
             </div>
 
-            <div className="pt-4 border-t border-surface-border mt-4 flex items-center justify-between text-xs font-mono text-text-muted group-hover:text-rosso transition-colors">
+            <div className="pt-4 border-t border-white/10 mt-4 flex items-center justify-between text-xs font-telemetry text-zinc-500 group-hover:text-rosso transition-colors">
               <span>View duel breakdown</span>
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
@@ -57,50 +57,50 @@ export const TeammatesSection: React.FC = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedTeammate(null)}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-raceDark/70 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md"
           >
             <motion.div
               initial={{ scale: 0.95, y: 20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.95, y: 20 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-lg p-6 sm:p-8 rounded-card bg-cream-50 dark:bg-raceDark-surface border border-surface-border shadow-2xl"
+              className="relative w-full max-w-lg p-6 sm:p-8 rounded-2xl bg-[#121215] border border-white/10 shadow-2xl text-white"
             >
               <button
                 onClick={() => setSelectedTeammate(null)}
-                className="absolute top-4 right-4 p-2 rounded-full hover:bg-cream-200 dark:hover:bg-raceDark text-text-muted hover:text-text-primary"
+                className="absolute top-4 right-4 p-2 rounded-full hover:bg-white/10 text-zinc-400 hover:text-white"
                 aria-label="Close modal"
               >
                 <X className="w-5 h-5" />
               </button>
 
-              <div className="flex items-center gap-2 text-xs font-mono text-rosso uppercase mb-1">
+              <div className="flex items-center gap-2 text-xs font-telemetry text-rosso uppercase mb-1">
                 <Users className="w-4 h-4" />
                 <span>Garage Partnership · {selectedTeammate.team}</span>
               </div>
 
-              <h3 className="font-displayGrotesk font-black text-3xl text-text-primary mb-2">
+              <h3 className="font-display font-black text-3xl text-white mb-2">
                 {selectedTeammate.name}
               </h3>
-              <span className="inline-block px-3 py-1 rounded-full bg-cream-200 dark:bg-raceDark text-xs font-mono text-text-secondary mb-4">
+              <span className="inline-block px-3 py-1 rounded-full bg-[#18181C] text-xs font-telemetry text-zinc-400 mb-4 border border-white/5">
                 Years: {selectedTeammate.years}
               </span>
 
-              <p className="text-sm text-text-secondary leading-relaxed mb-6">
+              <p className="text-sm text-zinc-300 leading-relaxed mb-6 font-sans">
                 {selectedTeammate.relationshipSummary}
               </p>
 
-              <div className="grid grid-cols-2 gap-3 pt-4 border-t border-surface-border text-center">
-                <div className="p-3 rounded-xl bg-cream-100 dark:bg-raceDark-card">
-                  <span className="block text-[10px] font-mono text-text-muted uppercase">Hamilton Titles</span>
+              <div className="grid grid-cols-2 gap-3 pt-4 border-t border-white/10 text-center font-telemetry">
+                <div className="p-3 rounded-xl bg-[#18181C] border border-white/5">
+                  <span className="block text-[10px] font-mono text-zinc-500 uppercase">Hamilton Titles</span>
                   <span className="text-xl font-black text-rosso">
                     {selectedTeammate.titlesDuringPartnership} Titles
                   </span>
                 </div>
                 {selectedTeammate.winsTogether !== undefined && (
-                  <div className="p-3 rounded-xl bg-cream-100 dark:bg-raceDark-card">
-                    <span className="block text-[10px] font-mono text-text-muted uppercase">Wins as Teammates</span>
-                    <span className="text-xl font-black text-text-primary">
+                  <div className="p-3 rounded-xl bg-[#18181C] border border-white/5">
+                    <span className="block text-[10px] font-mono text-zinc-500 uppercase">Wins as Teammates</span>
+                    <span className="text-xl font-black text-white">
                       {selectedTeammate.winsTogether} Wins
                     </span>
                   </div>
