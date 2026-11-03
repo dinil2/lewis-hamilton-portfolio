@@ -1,0 +1,60 @@
+import { WorldTitle } from '@/types';
+
+export const worldTitles: WorldTitle[] = [
+  {
+    year: 2008,
+    team: 'McLaren',
+    car: 'McLaren MP4-23',
+    wins: 5,
+    points: 98,
+    notes: 'Clinched the championship in Brazil on the final lap, becoming the youngest champion in F1 history at the time.',
+  },
+  {
+    year: 2014,
+    team: 'Mercedes-AMG Petronas',
+    car: 'Mercedes F1 W05 Hybrid',
+    wins: 11,
+    points: 384,
+    notes: 'First title of the turbo-hybrid era after an intense duel with Nico Rosberg, culminating in Abu Dhabi victory.',
+  },
+  {
+    year: 2015,
+    team: 'Mercedes-AMG Petronas',
+    car: 'Mercedes F1 W06 Hybrid',
+    wins: 10,
+    points: 381,
+    notes: 'Equalled childhood hero Ayrton Senna with a third title, sealing the crown at the US Grand Prix in Austin.',
+  },
+  {
+    year: 2017,
+    team: 'Mercedes-AMG Petronas',
+    car: 'Mercedes-AMG F1 W08 EQ Power+',
+    wins: 9,
+    points: 363,
+    notes: 'Overcame a fierce season-long challenge from Ferrari and Sebastian Vettel to take his fourth crown.',
+  },
+  {
+    year: 2018,
+    team: 'Mercedes-AMG Petronas',
+    car: 'Mercedes-AMG F1 W09 EQ Power+',
+    wins: 11,
+    points: 408,
+    notes: 'The "Fight for Five". Masterful drives across Hockenheim and Singapore to secure the fifth championship.',
+  },
+  {
+    year: 2019,
+    team: 'Mercedes-AMG Petronas',
+    car: 'Mercedes-AMG F1 W10 EQ Power+',
+    wins: 11,
+    points: 413,
+    notes: 'Dominant campaign claiming 413 points, sealed with a podium finish in Austin, Texas.',
+  },
+  {
+    year: 2020,
+    team: 'Mercedes-AMG Petronas',
+    car: 'Mercedes-AMG F1 W11 EQ Performance',
+    wins: 11,
+    points: 347,
+    notes: 'Equalled Michael Schumacher with a 7th World Championship after a legendary wet-weather masterclass in Turkey.',
+  },
+];

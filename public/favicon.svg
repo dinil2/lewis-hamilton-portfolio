@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="14" fill="#0E0E0E"/>
+  <!-- Helmet dome -->
+  <path d="M14 36C14 23.8497 23.8497 14 36 14C45.3888 14 53.4078 19.8667 56.5 28.1C55.6 28 54.5 28 53.4 28C46 28 40.5 31.5 37 36H24C20.6863 36 18 38.6863 18 42C18 45.3137 20.6863 48 24 48H46C49.3137 48 52 45.3137 52 42V40" stroke="#E10600" stroke-width="3" stroke-linecap="round"/>
+  <!-- Visor -->
+  <path d="M26 31H46C48.2091 31 50 32.7909 50 35V36H26V31Z" fill="#FFF200"/>
+  <!-- Number 44 mark -->
+  <text x="32" y="47" fill="#E10600" font-family="sans-serif" font-weight="900" font-size="9" text-anchor="middle">44</text>
+</svg>

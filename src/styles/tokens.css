@@ -1,0 +1,52 @@
+:root {
+  --bg-primary: #F6F4EF;
+  --bg-secondary: #ECE8DE;
+  --bg-tertiary: #E2DDD0;
+  --surface: #FFFFFF;
+  --surface-glass: rgba(255, 255, 255, 0.75);
+  --surface-card: rgba(255, 255, 255, 0.85);
+  --surface-border: rgba(14, 14, 14, 0.08);
+
+  --text-primary: #0E0E0E;
+  --text-secondary: #4A4640;
+  --text-muted: #7E786E;
+  --text-inverted: #F6F4EF;
+
+  --rosso-corsa: #E10600;
+  --rosso-dark: #B30500;
+  --rosso-light: #FF2B24;
+  --ferrari-yellow: #FFE500;
+  
+  --shadow-sm: 0 2px 8px rgba(14, 14, 14, 0.04);
+  --shadow-md: 0 8px 24px rgba(14, 14, 14, 0.06);
+  --shadow-lg: 0 16px 40px rgba(14, 14, 14, 0.1);
+
+  /* Hero signature reveal variables */
+  --reveal-x: 50%;
+  --reveal-y: 50%;
+  --reveal-r: 0px;
+}
+
+.dark {
+  --bg-primary: #0A0A0A;
+  --bg-secondary: #121212;
+  --bg-tertiary: #1A1A1A;
+  --surface: #161616;
+  --surface-glass: rgba(22, 22, 22, 0.75);
+  --surface-card: rgba(24, 24, 24, 0.85);
+  --surface-border: rgba(246, 244, 239, 0.1);
+
+  --text-primary: #F6F4EF;
+  --text-secondary: #B0AAA0;
+  --text-muted: #736E66;
+  --text-inverted: #0E0E0E;
+
+  --rosso-corsa: #E10600;
+  --rosso-dark: #B30500;
+  --rosso-light: #FF352E;
+  --ferrari-yellow: #FFE500;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.7);
+}

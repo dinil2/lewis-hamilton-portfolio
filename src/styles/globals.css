@@ -1,0 +1,111 @@
+@import './tokens.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    border-color: var(--surface-border);
+  }
+
+  html {
+    scroll-behavior: auto; /* Handled smoothly by Lenis */
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100svh;
+    overflow-x: hidden;
+    position: relative;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  /* Accessible focus indicators */
+  :focus-visible {
+    outline: 2px solid var(--rosso-corsa);
+    outline-offset: 3px;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--surface-border);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--rosso-corsa);
+}
+
+/* Grain texture overlay */
+.grain-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* Subtle circuit contour lines pattern */
+.circuit-contour-bg {
+  background-image: radial-gradient(circle at 50% 30%, rgba(225, 6, 0, 0.03) 0%, transparent 60%),
+    repeating-radial-gradient(circle at 50% 50%, transparent 0, transparent 40px, rgba(14, 14, 14, 0.02) 40px, rgba(14, 14, 14, 0.02) 41px);
+}
+
+.dark .circuit-contour-bg {
+  background-image: radial-gradient(circle at 50% 30%, rgba(225, 6, 0, 0.06) 0%, transparent 60%),
+    repeating-radial-gradient(circle at 50% 50%, transparent 0, transparent 40px, rgba(246, 244, 239, 0.02) 40px, rgba(246, 244, 239, 0.02) 41px);
+}
+
+/* Signature Hero Radial Mask Reveal */
+.hero-reveal-mask {
+  mask-image: radial-gradient(
+    circle var(--reveal-r) at var(--reveal-x) var(--reveal-y),
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.95) 75%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle var(--reveal-r) at var(--reveal-x) var(--reveal-y),
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.95) 75%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+/* Glass UI card */
+.glass-panel {
+  background: var(--surface-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--surface-border);
+}
+
+/* Section performance containment */
+.section-contained {
+  contain: layout paint;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
