@@ -133,7 +133,7 @@ export const Hero: React.FC = () => {
             <span className="hero-name-lewis font-telemetry font-bold text-2xl sm:text-3xl lg:text-4xl tracking-widest uppercase text-rosso">
               SIR LEWIS
             </span>
-            <span className="hero-name-hamilton font-display font-black text-6xl sm:text-7xl md:text-8xl lg:text-9xl tracking-compressed uppercase text-white leading-[0.88] mt-1">
+            <span className="hero-name-hamilton font-display font-extrabold text-6xl sm:text-7xl md:text-8xl lg:text-9xl tracking-tight uppercase bg-gradient-to-b from-white via-zinc-100 to-zinc-400 bg-clip-text text-transparent leading-[0.9] mt-1 drop-shadow-md">
               HAMILTON
             </span>
           </div>

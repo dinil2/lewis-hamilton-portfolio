@@ -52,11 +52,25 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
         >
           {/* Header row */}
           <div className="flex items-center justify-between border-b border-white/10 pb-4">
-            <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-rosso animate-ping" />
-              <span className="font-display font-black text-xl tracking-tight text-white">
-                LH44 ARCHIVE
-              </span>
+            <div className="flex items-center gap-2.5 select-none">
+              <div className="relative flex items-center justify-center">
+                <span className="w-2.5 h-2.5 rounded-full bg-rosso shadow-[0_0_8px_#E10600]" />
+                <span className="absolute w-4 h-4 rounded-full bg-rosso/40 animate-ping pointer-events-none" />
+              </div>
+              <div className="flex flex-col leading-none">
+                <div className="flex items-baseline gap-1.5">
+                  <span className="text-[10px] font-telemetry font-bold tracking-[0.22em] text-rosso uppercase">
+                    LH
+                  </span>
+                  <span className="text-[11px] font-mono text-zinc-500">/</span>
+                  <span className="font-display font-bold text-base tracking-[0.16em] uppercase text-white">
+                    HAMILTON
+                  </span>
+                </div>
+                <span className="text-[8.5px] font-mono tracking-[0.22em] text-zinc-400 uppercase mt-0.5">
+                  SCUDERIA FERRARI #44
+                </span>
+              </div>
             </div>
 
             <div className="flex items-center gap-3">

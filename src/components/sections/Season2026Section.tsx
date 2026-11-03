@@ -2,19 +2,21 @@ import React, { useState } from 'react';
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import { season2026 } from '@/data/season2026';
 import { siteConfig } from '@/data/site';
-import { Flame } from 'lucide-react';
+import { useRaceCountdown } from '@/hooks/useRaceCountdown';
+import { remainingRounds2026 } from '@/lib/schedule';
+import { Flame, Clock, Calendar } from 'lucide-react';
 
 export const Season2026Section: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'drivers' | 'constructors'>('drivers');
   const {
     podiumsCount,
     lastRace,
-    nextRace,
     driverStandings,
     constructorStandings,
     podiums,
-    remainingRounds,
   } = season2026;
+
+  const { activeRace, days, hours, minutes, seconds, isStarted } = useRaceCountdown();
 
   return (
     <SectionWrapper
@@ -24,7 +26,7 @@ export const Season2026Section: React.FC = () => {
       title="2026 Season Hub · Scuderia Ferrari"
       description={`Official season standings and verified race ledger. Snapshot captured ${siteConfig.snapshotLabel} (${siteConfig.lastUpdated}).`}
     >
-      {/* Top Ledger: Last Race & Next Race Cards */}
+      {/* Top Ledger: Last Race & Dynamic Next Race Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
         {/* Last Race: Mexico City GP */}
         <div className="p-6 sm:p-8 rounded-2xl bg-[#111114] border border-rosso/40 relative overflow-hidden shadow-xl">
@@ -57,26 +59,55 @@ export const Season2026Section: React.FC = () => {
           </div>
         </div>
 
-        {/* Next Race: São Paulo GP */}
+        {/* Dynamic Next Race: Auto-advances across rounds */}
         <div className="p-6 sm:p-8 rounded-2xl bg-[#111114] border border-white/10 relative overflow-hidden flex flex-col justify-between shadow-xl">
-          <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-ferrariYellow/20 text-ferrariYellow text-xs font-telemetry font-bold uppercase">
-            Up Next
-          </div>
-          <div>
-            <span className="text-xs font-telemetry text-rosso font-bold uppercase tracking-wider block mb-1">
-              Round 20 · 8 Nov 2026
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-xs font-telemetry text-rosso font-bold uppercase tracking-wider block">
+              Round {activeRace.roundNumber} · {activeRace.date}
             </span>
+            <div className="px-3 py-0.5 rounded-full bg-ferrariYellow/20 text-ferrariYellow text-xs font-telemetry font-bold uppercase border border-ferrariYellow/30">
+              Up Next
+            </div>
+          </div>
+
+          <div>
             <h3 className="font-display font-black text-2xl sm:text-3xl text-white mb-2">
-              {nextRace.name}
+              {activeRace.name}
             </h3>
             <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed mb-4 font-sans">
-              Returning to the sacred tarmac of Interlagos, where Hamilton claimed his first World Championship in 2008 and scored his legendary 2021 penalty recovery victory.
+              {activeRace.highlightText}
             </p>
           </div>
 
+          {/* Live Countdown Banner */}
+          <div className="mb-4 p-3 rounded-xl bg-black/40 border border-white/10 flex items-center justify-between">
+            <div className="flex items-center gap-2 text-xs font-mono text-zinc-400">
+              <Clock className="w-3.5 h-3.5 text-rosso animate-pulse" />
+              <span className="uppercase tracking-wider">Countdown to Green</span>
+            </div>
+            <div className="flex items-center gap-1 font-mono text-xs font-bold text-white">
+              {isStarted ? (
+                <span className="text-ferrariYellow animate-pulse">RACE IN PROGRESS</span>
+              ) : (
+                <>
+                  <span className="bg-white/10 px-2 py-0.5 rounded text-white">{days}d</span>
+                  <span className="text-zinc-500">:</span>
+                  <span className="bg-white/10 px-2 py-0.5 rounded text-white">{String(hours).padStart(2, '0')}h</span>
+                  <span className="text-zinc-500">:</span>
+                  <span className="bg-white/10 px-2 py-0.5 rounded text-white">{String(minutes).padStart(2, '0')}m</span>
+                  <span className="text-zinc-500">:</span>
+                  <span className="bg-rosso/20 border border-rosso/40 px-2 py-0.5 rounded text-rosso">{String(seconds).padStart(2, '0')}s</span>
+                </>
+              )}
+            </div>
+          </div>
+
           <div className="flex items-center justify-between p-3 rounded-xl bg-[#18181C] border border-white/5 text-xs font-telemetry">
-            <span className="text-zinc-400">{nextRace.circuit}</span>
-            <span className="font-bold text-rosso">{nextRace.city}, {nextRace.country}</span>
+            <span className="text-zinc-400 flex items-center gap-1.5">
+              <Calendar className="w-3 h-3 text-rosso" />
+              {activeRace.circuit}
+            </span>
+            <span className="font-bold text-rosso">{activeRace.city}, {activeRace.country}</span>
           </div>
         </div>
       </div>
@@ -120,68 +151,72 @@ export const Season2026Section: React.FC = () => {
         <div className="lg:col-span-7 p-6 sm:p-8 rounded-2xl bg-[#111114] border border-white/10 shadow-xl">
           <div className="flex items-center justify-between mb-6">
             <h4 className="font-display font-black text-xl text-white">
-              2026 Official Standings
+              Official 2026 Championship
             </h4>
-
-            {/* Toggle Tab */}
-            <div className="flex items-center gap-1 p-1 rounded-full bg-[#18181C] text-xs font-telemetry border border-white/5">
+            <div className="flex p-1 rounded-xl bg-[#18181C] border border-white/5 text-xs font-telemetry">
               <button
                 onClick={() => setActiveTab('drivers')}
-                className={`px-3 py-1 rounded-full transition-all ${
+                className={`px-3 py-1.5 rounded-lg transition-colors font-bold ${
                   activeTab === 'drivers'
-                    ? 'bg-rosso text-white font-bold shadow-md'
+                    ? 'bg-rosso text-white'
                     : 'text-zinc-400 hover:text-white'
                 }`}
               >
-                Drivers Top 7
+                Drivers
               </button>
               <button
                 onClick={() => setActiveTab('constructors')}
-                className={`px-3 py-1 rounded-full transition-all ${
+                className={`px-3 py-1.5 rounded-lg transition-colors font-bold ${
                   activeTab === 'constructors'
-                    ? 'bg-rosso text-white font-bold shadow-md'
+                    ? 'bg-rosso text-white'
                     : 'text-zinc-400 hover:text-white'
                 }`}
               >
-                Constructors Top 4
+                Constructors
               </button>
             </div>
           </div>
 
           {activeTab === 'drivers' ? (
             <div className="overflow-x-auto">
-              <table className="w-full text-left text-sm font-sans">
+              <table className="w-full text-left text-sm">
                 <thead>
-                  <tr className="border-b border-white/10 text-[11px] font-telemetry uppercase text-zinc-500">
-                    <th className="py-2.5 pr-2">Pos</th>
-                    <th className="py-2.5 px-3">Driver</th>
-                    <th className="py-2.5 px-3">Team</th>
-                    <th className="py-2.5 pl-3 text-right">Points</th>
+                  <tr className="border-b border-white/10 text-xs font-telemetry text-zinc-500 uppercase">
+                    <th className="py-2 pr-2">Pos</th>
+                    <th className="py-2 px-3">Driver</th>
+                    <th className="py-2 px-3">Team</th>
+                    <th className="py-2 pl-3 text-right">Pts</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-white/5 font-sans">
-                  {driverStandings.map((driver) => (
+                  {driverStandings.map((d) => (
                     <tr
-                      key={driver.pos}
+                      key={d.pos}
                       className={
-                        driver.isLewis
+                        d.isLewis
                           ? 'bg-rosso/15 font-bold text-white'
                           : 'hover:bg-white/5'
                       }
                     >
                       <td className="py-3 pr-2 font-telemetry text-xs">
-                        {driver.pos === 1 ? '👑 P1' : `P${driver.pos}`}
+                        {d.isLewis ? (
+                          <span className="w-6 h-6 rounded-full bg-rosso text-white inline-flex items-center justify-center font-black">
+                            {d.pos}
+                          </span>
+                        ) : (
+                          `P${d.pos}`
+                        )}
                       </td>
                       <td className="py-3 px-3 flex items-center gap-2">
-                        <span>{driver.driver}</span>
-                        {driver.isLewis && (
+                        <span>{d.driver}</span>
+                        {d.isLewis && (
                           <span className="px-1.5 py-0.2 rounded bg-rosso text-white text-[10px] font-mono">
                             #44
                           </span>
                         )}
                       </td>
-                      <td className="py-3 px-3 text-zinc-400 text-xs">{driver.team}</td>
-                      <td className="py-3 pl-3 text-right font-mono font-bold text-white">{driver.points}</td>
+                      <td className="py-3 px-3 text-xs text-zinc-400">{d.team}</td>
+                      <td className="py-3 pl-3 text-right font-mono font-bold text-white">{d.points}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -189,12 +224,12 @@ export const Season2026Section: React.FC = () => {
             </div>
           ) : (
             <div className="overflow-x-auto">
-              <table className="w-full text-left text-sm font-sans">
+              <table className="w-full text-left text-sm">
                 <thead>
-                  <tr className="border-b border-white/10 text-[11px] font-telemetry uppercase text-zinc-500">
-                    <th className="py-2.5 pr-2">Pos</th>
-                    <th className="py-2.5 px-3">Constructor</th>
-                    <th className="py-2.5 pl-3 text-right">Points</th>
+                  <tr className="border-b border-white/10 text-xs font-telemetry text-zinc-500 uppercase">
+                    <th className="py-2 pr-2">Pos</th>
+                    <th className="py-2 px-3">Team</th>
+                    <th className="py-2 pl-3 text-right">Pts</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-white/5 font-sans">
@@ -270,24 +305,57 @@ export const Season2026Section: React.FC = () => {
             </div>
           </div>
 
-          {/* Remaining Rounds Footer */}
+          {/* Dynamic Remaining Rounds Footer */}
           <div className="pt-6 border-t border-white/10 mt-6 font-telemetry">
-            <span className="block text-[11px] font-mono text-zinc-500 uppercase tracking-wider mb-2">
-              Remaining Calendar: 4 Grand Prix
-            </span>
-            <div className="flex flex-wrap gap-2 text-xs">
-              {remainingRounds.map((rnd, i) => (
-                <span
-                  key={i}
-                  className={`px-2.5 py-1 rounded-md border ${
-                    rnd.next
-                      ? 'border-rosso bg-rosso/15 text-rosso font-bold'
-                      : 'border-white/5 bg-[#18181C] text-zinc-400'
-                  }`}
-                >
-                  {rnd.round}
-                </span>
-              ))}
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-wider">
+                Season Schedule · 2026 Finale
+              </span>
+              <span className="text-[10px] font-mono text-rosso font-semibold">
+                Dynamic Calendar Engine
+              </span>
+            </div>
+            <div className="flex flex-col gap-2 text-xs">
+              {remainingRounds2026.map((rnd) => {
+                const isCurrentNext = rnd.roundNumber === activeRace.roundNumber;
+                const isPast = rnd.roundNumber < activeRace.roundNumber;
+                return (
+                  <div
+                    key={rnd.roundNumber}
+                    className={`px-3 py-2 rounded-xl border flex items-center justify-between ${
+                      isCurrentNext
+                        ? 'border-rosso bg-rosso/15 text-white font-bold shadow-md shadow-rosso/10'
+                        : isPast
+                        ? 'border-white/5 bg-[#141416] text-zinc-500'
+                        : 'border-white/5 bg-[#18181C] text-zinc-400'
+                    }`}
+                  >
+                    <div className="flex items-center gap-2">
+                      {isCurrentNext ? (
+                        <span className="w-2 h-2 rounded-full bg-rosso animate-ping" />
+                      ) : isPast ? (
+                        <span className="text-[10px] font-mono text-zinc-600">✓</span>
+                      ) : (
+                        <span className="w-1.5 h-1.5 rounded-full bg-zinc-600" />
+                      )}
+                      <span>Round {rnd.roundNumber}: {rnd.name}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-[11px] font-mono">{rnd.date}</span>
+                      {isCurrentNext && (
+                        <span className="px-1.5 py-0.2 rounded bg-rosso text-white text-[9px] font-mono uppercase">
+                          Up Next
+                        </span>
+                      )}
+                      {isPast && (
+                        <span className="px-1.5 py-0.2 rounded bg-white/5 text-zinc-500 text-[9px] font-mono uppercase">
+                          Finished
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

@@ -89,16 +89,32 @@ export const Navbar: React.FC<NavbarProps> = ({ isDark, toggleDark }) => {
           <a
             href="#hero"
             aria-label="Lewis Hamilton Home"
-            className="flex items-center gap-2 group cursor-pointer"
+            className="flex items-center gap-2.5 group cursor-pointer select-none"
           >
-            <span className="w-2.5 h-2.5 rounded-full bg-rosso group-hover:scale-125 transition-transform" />
+            {/* Live Racing Indicator Dot with Red Pulse */}
+            <div className="relative flex items-center justify-center">
+              <span className="w-2.5 h-2.5 rounded-full bg-rosso shadow-[0_0_8px_#E10600]" />
+              <span className="absolute w-4 h-4 rounded-full bg-rosso/40 animate-ping pointer-events-none" />
+            </div>
+
             <div className="flex flex-col leading-none">
-              <span className="font-displayGrotesk font-black text-base sm:text-lg tracking-tight text-text-primary">
-                HAMILTON
-              </span>
-              <span className="text-[9px] font-mono tracking-widest text-text-muted">
-                SCUDERIA #44
-              </span>
+              <div className="flex items-baseline gap-1.5">
+                <span className="text-[10px] font-telemetry font-bold tracking-[0.22em] text-rosso uppercase">
+                  LH
+                </span>
+                <span className="text-[11px] font-mono text-zinc-500">/</span>
+                <span className="font-display font-bold text-sm sm:text-base tracking-[0.16em] uppercase text-zinc-100 group-hover:text-white transition-colors">
+                  HAMILTON
+                </span>
+              </div>
+              <div className="flex items-center gap-1.5 mt-1">
+                <span className="text-[8px] sm:text-[8.5px] font-mono font-medium tracking-[0.22em] text-zinc-400 uppercase">
+                  SCUDERIA FERRARI
+                </span>
+                <span className="text-[8px] font-mono font-bold px-1 py-0.2 rounded bg-rosso/15 text-rosso border border-rosso/30">
+                  #44
+                </span>
+              </div>
             </div>
           </a>
 
